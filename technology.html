@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duron – Engine Oil Technology</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C96A;
+            --gold-dim: rgba(201, 168, 76, 0.12);
+            --gold-glow: rgba(201, 168, 76, 0.25);
+            --dark: #080808;
+            --dark-1: #0D0D0D;
+            --dark-2: #111111;
+            --dark-3: #161616;
+            --dark-4: #1C1C1C;
+            --text: #C8C0B4;
+            --muted: #5A5550;
+            --white: #F2EDE4;
+            --red-accent: #C0392B;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ════════════════════════════════
+       NOISE OVERLAY
+    ════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ════════════════════════════════
+       HERO SECTION
+    ════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--dark-1);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201, 168, 76, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                linear-gradient(135deg, #050505 0%, #0e0e0e 50%, #080808 100%);
+        }
+
+        /* animated grid lines */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridShift 20s linear infinite;
+        }
+
+        @keyframes gridShift {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 60px 60px;
+            }
+        }
+
+        /* diagonal slice */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: var(--dark);
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s 0.1s both;
+        }
+
+        .hero-label-line {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-label span {
+            font-size: 10px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .hero-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(52px, 7vw, 96px);
+            line-height: 0.9;
+            color: var(--white);
+            margin-bottom: 28px;
+            animation: fadeUp 0.8s 0.2s both;
+        }
+
+        .hero-heading .line-gold {
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-heading .line-outline {
+            -webkit-text-stroke: 1px rgba(242, 237, 228, 0.3);
+            color: transparent;
+            display: block;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            line-height: 1.9;
+            color: var(--muted);
+            max-width: 440px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeUp 0.8s 0.35s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            animation: fadeUp 0.8s 0.45s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: #000;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 16px 32px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 16px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            cursor: pointer;
+            transition: border-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Hero right – animated oil molecule visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1.2s 0.3s both;
+        }
+
+        .molecule-ring {
+            position: relative;
+            width: 380px;
+            height: 380px;
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .ring-1 {
+            inset: 0;
+            animation: spin 18s linear infinite;
+        }
+
+        .ring-2 {
+            inset: 30px;
+            border-color: rgba(201, 168, 76, 0.1);
+            animation: spin 12s linear infinite reverse;
+        }
+
+        .ring-3 {
+            inset: 60px;
+            border-color: rgba(201, 168, 76, 0.2);
+            animation: spin 8s linear infinite;
+        }
+
+        .ring::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 12px var(--gold);
+        }
+
+        .ring-2::before {
+            background: var(--gold-light);
+            width: 6px;
+            height: 6px;
+        }
+
+        .ring-3::before {
+            width: 5px;
+            height: 5px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .molecule-center {
+            position: absolute;
+            inset: 90px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .molecule-center .mol-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .molecule-center .mol-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 52px;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        /* floating particles */
+        .particles {
+            position: absolute;
+            inset: -40px;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float var(--dur, 4s) var(--delay, 0s) ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            80% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx, 20px), var(--ty, -40px));
+            }
+        }
+
+        /* ════════════════════════════════
+       TECH STATS BAR
+    ════════════════════════════════ */
+        .stats-bar {
+            background: var(--dark-3);
+            border-top: 1px solid rgba(201, 168, 76, 0.1);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+
+        .stats-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-cell {
+            padding: 32px 20px;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .stat-cell:last-child {
+            border-right: none;
+        }
+
+        .stat-cell:hover {
+            background: rgba(201, 168, 76, 0.04);
+        }
+
+        .stat-cell::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s;
+        }
+
+        .stat-cell:hover::before {
+            width: 100%;
+        }
+
+        .stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 44px;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-unit {
+            font-family: 'Orbitron', monospace;
+            font-size: 10px;
+            color: var(--gold);
+            vertical-align: super;
+        }
+
+        .stat-desc {
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* ════════════════════════════════
+       SECTION COMMON
+    ════════════════════════════════ */
+        .section-wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 100px 60px;
+        }
+
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .section-eyebrow-line {
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-eyebrow span {
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(40px, 5vw, 64px);
+            color: var(--white);
+            line-height: 0.95;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 300;
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        .title-bar {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            margin: 16px 0 56px;
+        }
+
+        /* ════════════════════════════════
+       TECH PILLARS — TITANIUM PROTECTION
+    ════════════════════════════════ */
+        .tech-pillars-section {
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-pillars-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            opacity: 0.3;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .pillar-card {
+            background: var(--dark-2);
+            padding: 48px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.4s;
+            cursor: default;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            background: var(--dark-3);
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* big number watermark */
+        .pillar-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            color: rgba(201, 168, 76, 0.04);
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            line-height: 1;
+            user-select: none;
+            transition: color 0.4s;
+        }
+
+        .pillar-card:hover .pillar-num {
+            color: rgba(201, 168, 76, 0.08);
+        }
+
+        .pillar-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            background: rgba(201, 168, 76, 0.05);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .pillar-card:hover .pillar-icon {
+            background: rgba(201, 168, 76, 0.15);
+            border-color: var(--gold);
+        }
+
+        .pillar-icon i {
+            font-size: 20px;
+            color: var(--gold);
+        }
+
+        .pillar-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .pillar-body {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.85;
+            font-weight: 300;
+        }
+
+        .pillar-tag {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 5px 12px;
+            text-transform: uppercase;
+        }
+
+        /* ════════════════════════════════
+       PUREPLUS TECHNOLOGY — SPLIT
+    ════════════════════════════════ */
+        .pureplus-section {
+            background: var(--dark-1);
+            position: relative;
+        }
+
+        .pureplus-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Left – visual */
+        .pureplus-visual {
+            position: relative;
+        }
+
+        .oil-bottle-graphic {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* animated liquid fill */
+        .liquid-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65%;
+            background: linear-gradient(to top,
+                    rgba(201, 168, 76, 0.35) 0%,
+                    rgba(201, 168, 76, 0.15) 60%,
+                    transparent 100%);
+            animation: liquidPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes liquidPulse {
+
+            0%,
+            100% {
+                height: 65%;
+            }
+
+            50% {
+                height: 68%;
+            }
+        }
+
+        .liquid-wave {
+            position: absolute;
+            top: -20px;
+            left: -50%;
+            width: 200%;
+            height: 40px;
+            background: rgba(201, 168, 76, 0.1);
+            border-radius: 50%;
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateX(-10px) rotateZ(0deg);
+            }
+
+            50% {
+                transform: translateX(10px) rotateZ(1deg);
+            }
+        }
+
+        .bottle-label {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .bottle-label .brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--white);
+            letter-spacing: 6px;
+            line-height: 1;
+            display: block;
+        }
+
+        .bottle-label .grade {
+            font-family: 'Orbitron', monospace;
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .bottle-label .viscosity {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* corner marks */
+        .oil-bottle-graphic::before,
+        .oil-bottle-graphic::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+        }
+
+        .oil-bottle-graphic::before {
+            top: 16px;
+            left: 16px;
+            border-top: 1px solid var(--gold);
+            border-left: 1px solid var(--gold);
+            opacity: 0.5;
+        }
+
+        .oil-bottle-graphic::after {
+            bottom: 16px;
+            right: 16px;
+            border-bottom: 1px solid var(--gold);
+            border-right: 1px solid var(--gold);
+            opacity: 0.5;
+        }
+
+        /* spec tags */
+        .spec-tags {
+            position: absolute;
+            top: 20px;
+            right: -16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .spec-tag {
+            background: var(--dark-4);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 8px 14px;
+            font-family: 'Orbitron', monospace;
+            font-size: 9px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        /* ─ Right content ─ */
+        .pureplus-content {}
+
+        .tech-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-top: 0;
+        }
+
+        .tech-item {
+            display: flex;
+            gap: 20px;
+            padding: 22px 20px;
+            background: var(--dark-2);
+            border-left: 3px solid transparent;
+            transition: border-color 0.3s, background 0.3s, transform 0.3s;
+            cursor: default;
+        }
+
+        .tech-item:hover {
+            border-left-color: var(--gold);
+            background: var(--dark-3);
+            transform: translateX(4px);
+        }
+
+        .tech-item-num {
+            font-family: 'Orbitron', monospace;
+            font-size: 10px;
+            color: rgba(201, 168, 76, 0.4);
+            padding-top: 3px;
+            min-width: 28px;
+            letter-spacing: 1px;
+        }
+
+        .tech-item-content {}
+
+        .tech-item-title {
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-item-body {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* ════════════════════════════════
+       PERFORMANCE BARS
+    ════════════════════════════════ */
+        .perf-section {
+            background: var(--dark);
+            position: relative;
+        }
+
+        .perf-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .perf-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .perf-bar-item {}
+
+        .perf-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .perf-bar-label {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .perf-bar-val {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: var(--gold);
+        }
+
+        .perf-track {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: visible;
+        }
+
+        .perf-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--gold), var(--gold-light));
+            position: relative;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .perf-fill.animate {
+            transform: scaleX(1);
+        }
+
+        .perf-fill::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -3px;
+            width: 10px;
+            height: 10px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        /* comparison columns */
+        .compare-cols {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .compare-header {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .compare-header .col-duron {
+            color: var(--gold);
+        }
+
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 16px;
+            background: var(--dark-2);
+            transition: background 0.3s;
+        }
+
+        .compare-row:hover {
+            background: var(--dark-3);
+        }
+
+        .compare-feat {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .compare-check {
+            width: 80px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .check-yes {
+            color: var(--gold);
+        }
+
+        .check-no {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ════════════════════════════════
+       GRADES / PRODUCTS
+    ════════════════════════════════ */
+        .grades-section {
+            background: var(--dark-1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grades-section::after {
+            content: 'DURON';
+            position: absolute;
+            bottom: -40px;
+            right: -20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 200px;
+            color: rgba(201, 168, 76, 0.025);
+            user-select: none;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .grade-card {
+            background: var(--dark-2);
+            padding: 36px 28px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s, transform 0.3s;
+            cursor: default;
+        }
+
+        .grade-card.featured {
+            background: linear-gradient(160deg, #1e1a10 0%, #141008 100%);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .grade-card:not(.featured):hover {
+            background: var(--dark-3);
+            transform: translateY(-4px);
+        }
+
+        .grade-card.featured:hover {
+            transform: translateY(-4px);
+        }
+
+        .grade-badge {
+            display: inline-block;
+            font-size: 8px;
+            letter-spacing: 3px;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: rgba(201, 168, 76, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .grade-badge.popular {
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            border-color: var(--gold);
+        }
+
+        .grade-viscosity {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .grade-card.featured .grade-viscosity {
+            color: var(--gold);
+        }
+
+        .grade-type {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .grade-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .grade-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .grade-features li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .grade-card.featured .grade-features li {
+            color: var(--text);
+        }
+
+        /* ════════════════════════════════
+       PROCESS TIMELINE
+    ════════════════════════════════ */
+        .process-section {
+            background: var(--dark);
+            position: relative;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            position: relative;
+            margin-top: 0;
+        }
+
+        /* connecting line */
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
+            opacity: 0.2;
+        }
+
+        .process-step {
+            padding: 0 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-dot {
+            width: 64px;
+            height: 64px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            background: var(--dark-2);
+            position: relative;
+            z-index: 1;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .process-step:hover .step-dot {
+            background: var(--gold-dim);
+            border-color: var(--gold);
+        }
+
+        .step-dot i {
+            font-size: 20px;
+            color: var(--gold);
+        }
+
+        .step-num {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            font-family: 'Orbitron', monospace;
+            font-size: 8px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 13px;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .step-body {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ════════════════════════════════
+       CTA BANNER
+    ════════════════════════════════ */
+        .cta-banner {
+            background: linear-gradient(135deg, #0f0d06 0%, #111 50%, #0a0a0a 100%);
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+        }
+
+        .cta-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 5vw, 64px);
+            color: var(--white);
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+
+        .cta-heading span {
+            color: var(--gold);
+        }
+
+        .cta-sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 36px;
+            font-weight: 300;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* ════════════════════════════════
+       ANIMATIONS
+    ════════════════════════════════ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                padding: 120px 40px 100px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .stats-bar-inner {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 40px;
+            }
+
+            .stat-cell:nth-child(2) {
+                border-right: none;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pureplus-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .perf-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .grades-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .section-wrap {
+                padding: 70px 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-inner {
+                padding: 100px 24px 80px;
+            }
+
+            .stats-bar-inner {
+                grid-template-columns: 1fr 1fr;
+                padding: 0 24px;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grades-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section-wrap {
+                padding: 60px 24px;
+            }
+
+            .cta-inner {
+                padding: 60px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .spec-tags {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+
+        <div class="hero-inner">
+            <!-- Left -->
+            <div class="hero-left">
+                <div class="hero-label">
+                    <div class="hero-label-line"></div>
+                    <span>Duron Engine Oil &nbsp;·&nbsp; Technology Overview</span>
+                </div>
+                <h1 class="hero-heading">
+                    ENGINEERED
+                    <span class="line-gold">AT THE</span>
+                    <span class="line-outline">MOLECULAR</span>
+                    LEVEL
+                </h1>
+                <p class="hero-desc">
+                    Duron's proprietary formulation stack combines Titanium Protection Technology with PurePlus base
+                    oils — delivering measurable engine longevity, cold-start reliability, and thermal stability under
+                    extreme conditions.
+                </p>
+                <div class="hero-cta">
+                    <a href="#technology" class="btn-primary"><i class="fas fa-flask"></i> Explore Technology</a>
+                    <a href="#grades" class="btn-ghost">View Oil Grades <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Right – molecule visual -->
+            <div class="hero-visual">
+                <div class="molecule-ring">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                    <div class="molecule-center">
+                        <span class="mol-label">Titanium<br>Protection</span>
+                        <span class="mol-value">Ti</span>
+                        <span class="mol-label" style="margin-top:4px;font-size:8px;letter-spacing:2px;">GRADE IV BASE
+                            OIL</span>
+                    </div>
+                    <!-- Particles -->
+                    <div class="particles" id="particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ STATS BAR ═══════════════════ -->
+    <div class="stats-bar">
+        <div class="stats-bar-inner">
+            <div class="stat-cell">
+                <span class="stat-num">99<span class="stat-unit">%</span></span>
+                <span class="stat-desc">Engine Protection Rate</span>
+            </div>
+            <div class="stat-cell">
+                <span class="stat-num">-40<span class="stat-unit">°C</span></span>
+                <span class="stat-desc">Cold Start Performance</span>
+            </div>
+            <div class="stat-cell">
+                <span class="stat-num">230<span class="stat-unit">°C</span></span>
+                <span class="stat-desc">Thermal Stability Limit</span>
+            </div>
+            <div class="stat-cell">
+                <span class="stat-num">3<span class="stat-unit">×</span></span>
+                <span class="stat-desc">Longer Engine Life</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ TECH PILLARS ═══════════════════ -->
+    <section class="tech-pillars-section" id="technology">
+        <div class="section-wrap">
+            <div class="section-eyebrow reveal">
+                <div class="section-eyebrow-line"></div>
+                <span>Core Technologies</span>
+            </div>
+            <h2 class="section-heading reveal">THREE PILLARS OF<br><span style="color:var(--gold)">PROTECTION</span>
+            </h2>
+            <div class="title-bar reveal"></div>
+
+            <div class="pillars-grid">
+
+                <div class="pillar-card reveal">
+                    <div class="pillar-num">01</div>
+                    <div class="pillar-icon"><i class="fas fa-atom"></i></div>
+                    <h3 class="pillar-title">Titanium Protection Technology</h3>
+                    <p class="pillar-body">
+                        Microscopic titanium particles bond directly to metal surfaces, forming an ultra-hard protective
+                        layer. This nano-shield reduces friction by up to 40% and withstands shear forces that destroy
+                        conventional oils.
+                    </p>
+                    <span class="pillar-tag">Nano-Shield Layer</span>
+                </div>
+
+                <div class="pillar-card reveal">
+                    <div class="pillar-num">02</div>
+                    <div class="pillar-icon"><i class="fas fa-tint"></i></div>
+                    <h3 class="pillar-title">PurePlus Base Oil Formulation</h3>
+                    <p class="pillar-body">
+                        Derived from natural gas using Fischer-Tropsch synthesis, our Group IV+ base oil is virtually
+                        free of impurities. The result is consistent viscosity across temperature extremes — from cold
+                        mornings to highway stress.
+                    </p>
+                    <span class="pillar-tag">Group IV+ Base Oil</span>
+                </div>
+
+                <div class="pillar-card reveal">
+                    <div class="pillar-num">03</div>
+                    <div class="pillar-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="pillar-title">Adaptive Viscosity Index</h3>
+                    <p class="pillar-body">
+                        Proprietary polymer modifiers maintain optimal film thickness regardless of operating
+                        conditions. Whether idling in traffic or pushing redline on an open road, oil pressure and
+                        protection remain constant.
+                    </p>
+                    <span class="pillar-tag">Dynamic VI Modifier</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ PUREPLUS ═══════════════════ -->
+    <section class="pureplus-section">
+        <div class="section-wrap">
+            <div class="pureplus-inner">
+
+                <!-- Visual -->
+                <div class="pureplus-visual reveal">
+                    <div class="oil-bottle-graphic">
+                        <div class="liquid-fill">
+                            <div class="liquid-wave"></div>
+                        </div>
+                        <div class="bottle-label">
+                            <span class="brand">DURON</span>
+                            <span class="grade">Premium Engine Oil</span>
+                            <span class="viscosity">10W-40 · 20W-50 · 0W-30</span>
+                        </div>
+                    </div>
+                    <div class="spec-tags">
+                        <div class="spec-tag">API SN PLUS</div>
+                        <div class="spec-tag">JASO MA2</div>
+                        <div class="spec-tag">BS6 READY</div>
+                        <div class="spec-tag">GF-6A CERT</div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="pureplus-content reveal">
+                    <div class="section-eyebrow">
+                        <div class="section-eyebrow-line"></div>
+                        <span>PurePlus Formulation</span>
+                    </div>
+                    <h2 class="section-heading">WHAT MAKES<br><span style="color:var(--gold)">DURON DIFFERENT</span>
+                    </h2>
+                    <div class="title-bar"></div>
+
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <span class="tech-item-num">01</span>
+                            <div class="tech-item-content">
+                                <p class="tech-item-title">Zero-Wax Base Stock</p>
+                                <p class="tech-item-body">Gas-to-liquid processing eliminates waxy compounds that cloud
+                                    and thicken in the cold — giving you instant lubrication from the first crank, every
+                                    time.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-item-num">02</span>
+                            <div class="tech-item-content">
+                                <p class="tech-item-title">Anti-Oxidation Additive Pack</p>
+                                <p class="tech-item-body">A blend of hindered phenol and diphenylamine antioxidants
+                                    neutralizes free radicals generated under high heat — extending oil life by up to
+                                    30% compared to conventional grades.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-item-num">03</span>
+                            <div class="tech-item-content">
+                                <p class="tech-item-title">Friction Modifier Complex</p>
+                                <p class="tech-item-body">Organo-molybdenum compounds create a sacrificial boundary
+                                    layer on cam lobes, rings, and bearings — reducing wear metals in used-oil analysis
+                                    by a measurable margin.</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-item-num">04</span>
+                            <div class="tech-item-content">
+                                <p class="tech-item-title">Detergent-Dispersant System</p>
+                                <p class="tech-item-body">Metallic sulfonates and succinimide dispersants keep
+                                    combustion by-products in suspension, preventing varnish deposits and sludge — even
+                                    in stop-and-go urban riding conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ PERFORMANCE BARS ═══════════════════ -->
+    <section class="perf-section">
+        <div class="section-wrap">
+            <div class="perf-layout">
+
+                <!-- Bars -->
+                <div>
+                    <div class="section-eyebrow reveal">
+                        <div class="section-eyebrow-line"></div>
+                        <span>Performance Metrics</span>
+                    </div>
+                    <h2 class="section-heading reveal">NUMBERS DON'T<br><span style="color:var(--gold)">LIE</span></h2>
+                    <div class="title-bar reveal"></div>
+
+                    <div class="perf-bars reveal" id="perf-bars">
+                        <div class="perf-bar-item">
+                            <div class="perf-bar-header">
+                                <span class="perf-bar-label">Wear Protection</span>
+                                <span class="perf-bar-val">99%</span>
+                            </div>
+                            <div class="perf-track">
+                                <div class="perf-fill" style="width:99%"></div>
+                            </div>
+                        </div>
+                        <div class="perf-bar-item">
+                            <div class="perf-bar-header">
+                                <span class="perf-bar-label">Thermal Stability</span>
+                                <span class="perf-bar-val">96%</span>
+                            </div>
+                            <div class="perf-track">
+                                <div class="perf-fill" style="width:96%"></div>
+                            </div>
+                        </div>
+                        <div class="perf-bar-item">
+                            <div class="perf-bar-header">
+                                <span class="perf-bar-label">Cold Start Performance</span>
+                                <span class="perf-bar-val">94%</span>
+                            </div>
+                            <div class="perf-track">
+                                <div class="perf-fill" style="width:94%"></div>
+                            </div>
+                        </div>
+                        <div class="perf-bar-item">
+                            <div class="perf-bar-header">
+                                <span class="perf-bar-label">Fuel Efficiency Gain</span>
+                                <span class="perf-bar-val">88%</span>
+                            </div>
+                            <div class="perf-track">
+                                <div class="perf-fill" style="width:88%"></div>
+                            </div>
+                        </div>
+                        <div class="perf-bar-item">
+                            <div class="perf-bar-header">
+                                <span class="perf-bar-label">Oxidation Resistance</span>
+                                <span class="perf-bar-val">97%</span>
+                            </div>
+                            <div class="perf-track">
+                                <div class="perf-fill" style="width:97%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison table -->
+                <div class="reveal">
+                    <div class="section-eyebrow" style="margin-bottom:16px;">
+                        <div class="section-eyebrow-line"></div>
+                        <span>vs. Conventional Oil</span>
+                    </div>
+                    <h2 class="section-heading" style="margin-bottom:36px;">WHY <span
+                            style="color:var(--gold)">DURON</span><br>WINS</h2>
+
+                    <div class="compare-cols">
+                        <div class="compare-header">
+                            <span>Feature</span>
+                            <span class="col-duron">Duron</span>
+                            <span>Regular</span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">Titanium Nano-Shield</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-no"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">Group IV+ Base Oil</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-no"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">BS6 / Euro-6 Compliant</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-no"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">Extended Drain Interval</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-no"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">JASO MA2 Wet Clutch Safe</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-yes" style="color:rgba(201,168,76,0.35)"><i
+                                    class="fas fa-check"></i></span>
+                        </div>
+                        <div class="compare-row">
+                            <span class="compare-feat">Anti-Sludge Dispersant</span>
+                            <span class="compare-check check-yes"><i class="fas fa-check"></i></span>
+                            <span class="compare-check check-no"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ GRADES ═══════════════════ -->
+    <section class="grades-section" id="grades">
+        <div class="section-wrap">
+            <div class="section-eyebrow reveal">
+                <div class="section-eyebrow-line"></div>
+                <span>Product Range</span>
+            </div>
+            <h2 class="section-heading reveal">CHOOSE YOUR<br><span style="color:var(--gold)">GRADE</span></h2>
+            <div class="title-bar reveal"></div>
+
+            <div class="grades-grid">
+
+                <div class="grade-card reveal">
+                    <div class="grade-badge">Economy</div>
+                    <div class="grade-viscosity">20W-50</div>
+                    <span class="grade-type">Mineral · JASO MA</span>
+                    <ul class="grade-features">
+                        <li>Ideal for older engines</li>
+                        <li>High-temp stability</li>
+                        <li>Budget-friendly formula</li>
+                        <li>API SL certified</li>
+                    </ul>
+                </div>
+
+                <div class="grade-card featured reveal">
+                    <div class="grade-badge popular">Most Popular</div>
+                    <div class="grade-viscosity">10W-40</div>
+                    <span class="grade-type">Semi-Synthetic · JASO MA2</span>
+                    <ul class="grade-features">
+                        <li>Titanium Protection Active</li>
+                        <li>PurePlus base oil blend</li>
+                        <li>All-season performance</li>
+                        <li>API SN PLUS · BS6 Ready</li>
+                        <li>3× engine life extension</li>
+                    </ul>
+                </div>
+
+                <div class="grade-card reveal">
+                    <div class="grade-badge">Performance</div>
+                    <div class="grade-viscosity">5W-40</div>
+                    <span class="grade-type">Full Synthetic · JASO MA2</span>
+                    <ul class="grade-features">
+                        <li>Full Group IV base oil</li>
+                        <li>Racing-grade additive pack</li>
+                        <li>Rapid cold-start lubrication</li>
+                        <li>API SN PLUS certified</li>
+                    </ul>
+                </div>
+
+                <div class="grade-card reveal">
+                    <div class="grade-badge">Ultra</div>
+                    <div class="grade-viscosity">0W-30</div>
+                    <span class="grade-type">Full Synthetic · GF-6A</span>
+                    <ul class="grade-features">
+                        <li>Ultra-low viscosity</li>
+                        <li>Max fuel economy grade</li>
+                        <li>EV-hybrid compatible</li>
+                        <li>GF-6A / API SP rated</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ PROCESS ═══════════════════ -->
+    <section class="process-section">
+        <div class="section-wrap">
+            <div class="section-eyebrow reveal" style="justify-content:center;">
+                <div class="section-eyebrow-line"></div>
+                <span>Manufacturing Process</span>
+                <div class="section-eyebrow-line"></div>
+            </div>
+            <h2 class="section-heading reveal" style="text-align:center; margin-bottom:14px;">FROM SOURCE TO<br><span
+                    style="color:var(--gold)">ENGINE</span></h2>
+            <div class="title-bar reveal" style="margin: 16px auto 56px;"></div>
+
+            <div class="process-steps">
+
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-mountain"></i>
+                        <span class="step-num">1</span>
+                    </div>
+                    <p class="step-title">Natural Gas Sourcing</p>
+                    <p class="step-body">Ultra-pure natural gas feedstock is selected from certified sources — the
+                        foundation of our Group IV base oil quality.</p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-cog"></i>
+                        <span class="step-num">2</span>
+                    </div>
+                    <p class="step-title">Fischer-Tropsch Synthesis</p>
+                    <p class="step-body">Gas is catalytically converted into a wax-free hydrocarbon liquid with a
+                        near-perfect molecular structure and no natural impurities.</p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-atom"></i>
+                        <span class="step-num">3</span>
+                    </div>
+                    <p class="step-title">Titanium Infusion</p>
+                    <p class="step-body">Proprietary nano-titanium particles are dispersed into the base oil under
+                        precision-controlled temperature and shear conditions.</p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-flask"></i>
+                        <span class="step-num">4</span>
+                    </div>
+                    <p class="step-title">Additive Blending</p>
+                    <p class="step-body">Antioxidants, friction modifiers, detergents, and VI improvers are metered in
+                        batch reactors to precise formulation targets.</p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="step-dot">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="step-num">5</span>
+                    </div>
+                    <p class="step-title">Quality Certification</p>
+                    <p class="step-body">Every batch passes 48-point laboratory testing before receiving API, JASO, and
+                        BS6 certification stamps — zero exceptions.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════ CTA BANNER ═══════════════════ -->
+    <section class="cta-banner">
+        <div class="cta-inner">
+            <h2 class="cta-heading reveal">READY TO PROTECT<br>YOUR <span>ENGINE?</span></h2>
+            <p class="cta-sub reveal">Join over 2 million riders who trust Duron's technology for every kilometer, every
+                season.</p>
+            <div class="cta-buttons reveal">
+                <a href="#" class="btn-primary"><i class="fas fa-shopping-bag"></i> Find Duron Near You</a>
+                <a href="#" class="btn-ghost">Download Tech Sheet <i class="fas fa-download"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ── Particle generator
+        const container = document.getElementById('particles');
+        if (container) {
+            for (let i = 0; i < 18; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top:  ${Math.random() * 100}%;
+        --dur:   ${3 + Math.random() * 4}s;
+        --delay: ${Math.random() * 5}s;
+        --tx:    ${(Math.random() - 0.5) * 60}px;
+        --ty:    ${-20 - Math.random() * 50}px;
+      `;
+                container.appendChild(p);
+            }
+        }
+
+        // ── Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 80);
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // ── Performance bar animation
+        const perfSection = document.getElementById('perf-bars');
+        const barObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                document.querySelectorAll('.perf-fill').forEach((fill, i) => {
+                    setTimeout(() => fill.classList.add('animate'), i * 150);
+                });
+                barObserver.disconnect();
+            }
+        }, { threshold: 0.3 });
+        if (perfSection) barObserver.observe(perfSection);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us – Duron Engine Oil</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        /* ── STORY SECTION ── */
+        .story-section {
+            background-color: var(--dark);
+            padding: 100px 0;
+        }
+
+        .story-img-block {
+            position: relative;
+        }
+
+        .story-img-block .img-main {
+            width: 100%;
+            height: 420px;
+            background: linear-gradient(135deg, #1a1510 0%, #252010 50%, #1a1208 100%);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-img-block .img-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(200, 168, 75, 0.03) 20px,
+                    rgba(200, 168, 75, 0.03) 21px);
+        }
+
+        .oil-drop-svg {
+            width: 160px;
+            opacity: 0.6;
+        }
+
+        .badge-founded {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 110px;
+            height: 110px;
+            background: var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .badge-founded .year {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: #111;
+            line-height: 1;
+        }
+
+        .badge-founded .since {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #111;
+            text-transform: uppercase;
+        }
+
+        /* ── MISSION VISION ── */
+
+        /* ── WHY DURON ── */
+        .why-section {
+            background-color: var(--dark2);
+            padding: 80px 0;
+        }
+
+
+        /* ── PRODUCTS STRIP ── */
+        .products-strip {
+            background: var(--gold);
+            padding: 28px 0;
+            overflow: hidden;
+        }
+
+        .products-strip .strip-inner {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .strip-item {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 4px;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .strip-dot {
+            width: 6px;
+            height: 6px;
+            background: #111;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ══ NAVBAR ══ -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">ELITE<span>PERFORMANCE</span></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+                <ul class="navbar-nav gap-0 mt-4 gap-lg-4 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="./about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./product.html">PRODUCTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#technology">TECHNOLOGY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="top-bar">
+        <i class="fas fa-tachometer-alt"></i> DRIVE WITH CONFIDENCE
+    </div> -->
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span class="ticker-item"><span class="ticker-dot"></span> DRIVE WITH CONFIDENCE</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> 4T SN GRADE · 20W40 · 10W30 · 10W40</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> TITANIUM PROTECTION TECHNOLOGY</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> PREMIUM ENGINE OIL FOR MOTORCYCLES UP TO
+                220CC</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> AVAILABLE ACROSS INDIA — 10 CITIES &
+                GROWING</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> DRIVE WITH CONFIDENCE</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> 4T SN GRADE · 20W40 · 10W30 · 10W40</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> TITANIUM PROTECTION TECHNOLOGY</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> PREMIUM ENGINE OIL FOR MOTORCYCLES UP TO
+                220CC</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> AVAILABLE ACROSS INDIA — 10 CITIES &
+                GROWING</span>
+        </div>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section class="about-hero">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <p class="our-story-label mb-5">About Duron Engine Oil</p>
+                    <h1 class="story-heading mb-2">
+                        ENGINEERED<br>
+                        FOR <span class="gold">POWER.</span>
+                        BUILT TO<br>LAST.
+                    </h1>
+                    <p class="about-hero-desc">
+                        Duron Engine Oil is India's trusted name in high-performance lubrication.
+                        From bustling city roads to rugged highways, we protect what powers your journey —
+                        every kilometre, every engine, every time.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="about-btn-gold">Our Products</a>
+                        <a href="#" class="about-btn-outline-gold">Our Story</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <!-- <div class="about-hero-stats">
+                <div class="row g-0 text-center">
+                    <div class="col-6 col-md-3">
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">25+</div>
+                            <div class="about-stat-label">Years of Excellence</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="about-stat-item">
+                            <div class="about-stat-number">500+</div>
+                            <div class="about-stat-label">Cities Covered</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="about-stat-item mt-4 mt-md-0">
+                            <div class="about-stat-number">10M+</div>
+                            <div class="about-stat-label">Engines Protected</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="about-stat-item mt-4 mt-md-0">
+                            <div class="about-stat-number">50+</div>
+                            <div class="about-stat-label">Product Variants</div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ══ PRODUCTS STRIP ══ -->
+    <!-- <div class="products-strip">
+        <div class="container">
+            <div class="strip-inner">
+                <div class="strip-item">Petrol Engine Oil <span class="strip-dot"></span></div>
+                <div class="strip-item">Diesel Engine Oil <span class="strip-dot"></span></div>
+                <div class="strip-item">Gear Oil <span class="strip-dot"></span></div>
+                <div class="strip-item">2T & 4T Oil <span class="strip-dot"></span></div>
+                <div class="strip-item">Industrial Lubricants <span class="strip-dot"></span></div>
+                <div class="strip-item">Coolants <span class="strip-dot"></span></div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- ══ STORY ══ -->
+    <section class="story-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <div class="story-img-block">
+                        <div class="img-main">
+                            <!-- Oil drop SVG illustration -->
+                            <svg class="oil-drop-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="oilGrad" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#c8a84b" stop-opacity="0.9" />
+                                        <stop offset="100%" stop-color="#7a5f1a" stop-opacity="0.7" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    d="M100 10 C100 10 20 100 20 160 C20 205 56 240 100 240 C144 240 180 205 180 160 C180 100 100 10 100 10Z"
+                                    fill="url(#oilGrad)" />
+                                <ellipse cx="75" cy="140" rx="14" ry="30" fill="rgba(255,255,255,0.12)"
+                                    transform="rotate(-20 75 140)" />
+                                <text x="100" y="175" text-anchor="middle" font-family="'Bebas Neue', sans-serif"
+                                    font-size="22" fill="rgba(17,17,17,0.8)" letter-spacing="3">DURON</text>
+                            </svg>
+                        </div>
+                        <div class="badge-founded">
+                            <span class="year">1999</span>
+                            <span class="since">Since</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <p class="our-story-label">Our Story</p>
+                    <h2 class="story-heading">MORE THAN <span>OIL.</span><br>A LEGACY.</h2>
+                    <div class="title-line"></div>
+                    <p class="story-body mb-4">
+                        Founded in 1999, Duron Engine Oil began with a single promise — to give every Indian engine
+                        the protection it truly deserves. From our first production line in a small facility
+                        to a pan-India distribution network spanning Tier-1 and Tier-2 cities, our journey
+                        has been built on one thing: trust.
+                    </p>
+                    <p class="story-body mb-4">
+                        We craft our lubricants using advanced additive technology, precision-blended to meet
+                        international API and JASO standards. Whether it's a two-wheeler on mountain roads
+                        or a commercial fleet on national highways — Duron delivers.
+                    </p>
+                    <div class="feature-grid">
+
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                            <div>
+                                <p class="feature-title"> API Certified</p>
+                                <p class="feature-desc">All products meet
+                                    API & JASO international standards</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <p class="feature-title">ISO Quality</p>
+                                <p class="feature-desc">ISO
+                                    9001:2015
+                                    certified manufacturing facility</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MISSION & VISION ══ -->
+    <section class="mv-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="our-story-label justify-content-center">What Drives Us</p>
+                <h2 class="story-heading">MISSION & <span class="gold">VISION</span></h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mv-card">
+                        <div class="mv-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <div class="mv-label">Our Mission</div>
+                        <div class="feat-title">PROTECT EVERY ENGINE</div>
+                        <p class="mv-text">To provide every vehicle owner in India with world-class lubrication that
+                            extends engine life, improves performance, and reduces maintenance costs — at a price that's
+                            accessible to all.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="mv-card">
+                        <div class="mv-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </div>
+                        <div class="mv-label">Our Vision</div>
+                        <div class="feat-title">INDIA'S #1 LUBRICANT</div>
+                        <p class="story-body">To become India's most trusted lubricant brand by 2030 — leading with
+                            innovation, reaching every corner of the country, and setting the benchmark for quality and
+                            performance.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="mv-card">
+                        <div class="mv-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <div class="mv-label">Our Promise</div>
+                        <div class="feat-title">ZERO COMPROMISE</div>
+                        <p class="story-body">Every batch of Duron oil undergoes rigorous multi-stage quality testing.
+                            We
+                            never cut corners. From raw material sourcing to the final product — zero compromise is our
+                            non-negotiable standard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHY DURON ══ -->
+    <section class="why-section">
+        <div class="container">
+            <div class="row align-items-end mb-5">
+                <div class="col-lg-6">
+                    <p class="our-story-label">Why Choose Us</p>
+                    <h2 class="story-heading">THE DURON<br><span>ADVANTAGE</span></h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="col-lg-6">
+                    <p class="story-body mb-5">Six reasons why millions of engines across India run on Duron — and why
+                        mechanics, fleet owners, and everyday drivers swear by us.</p>
+                </div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-cell">
+                    <span class="feat-number">01</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-snowplow feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">Advanced Additive Tech</h3>
+                    <p class="feat-desc">>Our proprietary additive packages are formulated to reduce friction,
+                        combat oxidation, and keep sludge at bay — even under extreme operating conditions.</p>
+                </div>
+                <div class="feature-cell">
+                    <span class="feat-number">02</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-fire feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">Extended Drain Intervals</h3>
+                    <p class="feat-desc">Duron's long-life formula means fewer oil changes, lower maintenance
+                        costs, and more time on the road — without sacrificing protection.</p>
+                </div>
+                <div class="feature-cell">
+                    <span class="feat-number">03</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-gem feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">All-Season Performance</h3>
+                    <p class="feat-desc">From the cold winters of the Himalayas to the scorching heat of
+                        Rajasthan — Duron maintains optimal viscosity in every climate.</p>
+                </div>
+                <div class="feature-cell">
+                    <span class="feat-number">04</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-oil-can feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">Pan-India Availability</h3>
+                    <p class="feat-desc">With 500+ distribution points and partnerships with leading auto stores,
+                        Duron is always within reach — wherever you are in India.</p>
+                </div>
+                <div class="feature-cell">
+                    <span class="feat-number">05</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-tachometer-alt feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">OEM Compatibility</h3>
+                    <p class="feat-desc">Duron products are compatible with all major OEM specifications for
+                        cars, bikes, trucks, and commercial vehicles — no guesswork needed.</p>
+                </div>
+                <div class="feature-cell">
+                    <span class="feat-number">06</span>
+                    <div class="feat-icon-wrap">
+                        <i class="fas fa-microchip feat-icon" style="color: var(--gold); font-size: 24px;"></i>
+                    </div>
+                    <h3 class="feat-title">Trusted by Mechanics</h3>
+                    <p class="feat-desc">Over 1 lakh mechanics across India actively recommend Duron — a trust
+                        earned not by marketing, but by consistent, real-world performance.</p>
+                </div>
+            </div>
+            <!-- <div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">01</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">Advanced Additive Tech</div>
+                        <p class="story-body">Our proprietary additive packages are formulated to reduce friction,
+                            combat oxidation, and keep sludge at bay — even under extreme operating conditions.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">02</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">Extended Drain Intervals</div>
+                        <p class="story-body">Duron's long-life formula means fewer oil changes, lower maintenance
+                            costs, and more time on the road — without sacrificing protection.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">03</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">All-Season Performance</div>
+                        <p class="story-body">From the cold winters of the Himalayas to the scorching heat of
+                            Rajasthan — Duron maintains optimal viscosity in every climate.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">04</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">Pan-India Availability</div>
+                        <p class="story-body">With 500+ distribution points and partnerships with leading auto stores,
+                            Duron is always within reach — wherever you are in India.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">05</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">OEM Compatibility</div>
+                        <p class="story-body">Duron products are compatible with all major OEM specifications for
+                            cars, bikes, trucks, and commercial vehicles — no guesswork needed.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feat-number">06</div>
+                        <div class="feature-line"></div>
+                        <div class="feat-title">Trusted by Mechanics</div>
+                        <p class="story-body">Over 1 lakh mechanics across India actively recommend Duron — a trust
+                            earned not by marketing, but by consistent, real-world performance.</p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ══ CORE VALUES ══ -->
+    <section class="values-section">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <p class="our-story-label">What We Stand For</p>
+                    <h2 class="story-heading">OUR CORE<br><span class="gold">VALUES</span></h2>
+                    <div class="title-line"></div>
+                    <p class="about-hero-desc mt-3">
+                        At Duron, our values aren't just words on a wall. They are the principles that guide every
+                        decision, every formulation, and every interaction with our customers and partners.
+                    </p>
+                    <a href="#" class="btn-custom">Join Our Network</a>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="value-row ">
+                        <div class="value-num">01</div>
+                        <div>
+                            <div class="feat-title">Integrity in Every Drop</div>
+                            <p class="story-body">We never dilute our product or our promises. What's on the label is
+                                exactly what's inside the bottle — guaranteed.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-num">02</div>
+                        <div>
+                            <div class="feat-title">Innovation Without Limits</div>
+                            <p class="story-body">Our R&D team continuously pushes the boundaries of lubricant
+                                technology to stay ahead of evolving engine requirements.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-num">03</div>
+                        <div>
+                            <div class="feat-title">Customer First, Always</div>
+                            <p class="story-body">From a two-wheeler owner in a small town to a fleet manager in a metro
+                                — every customer gets the same Duron quality and care.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-num">04</div>
+                        <div>
+                            <div class="feat-title">Sustainability Matters</div>
+                            <p class="story-body">We are committed to eco-responsible manufacturing, reducing our carbon
+                                footprint, and developing greener lubricant solutions for the future.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="cta-section">
+        <div class="container position-relative">
+            <p class="our-story-label justify-content-center">Ready to Experience Duron?</p>
+            <h2 class="story-heading">POWER YOUR ENGINE.<br><span class="gold">TRUST DURON.</span></h2>
+            <p class="story-body">Find the right oil for your vehicle and join millions of satisfied drivers across
+                India.
+            </p>
+            <div class="title-underline"></div>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="#" class="btn-custom">Find Your Oil</a>
+                <a href="#" class="btn-catalogue">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5>DUR<span>O</span>N</h5>
+                    <p>Premium engine oils for the modern rider. Engineered for performance, built for confidence.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>QUICK LINKS</h5>
+                    <p><a href="./about.html">About</a></p>
+                    <p><a href="./product.html">Products</a></p>
+                    <p><a href="#technology">Technology</a></p>
+                    <p><a href="./contact.html">Contact</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>PRODUCTS</h5>
+                    <p><a href="#">Duron 3100</a></p>
+                    <p><a href="#">Duron 10W30</a></p>
+                    <p><a href="#">Duron 10W40</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Network</h5>
+                    <p><a href="#">Dealer Locator</a></p>
+                    <p><a href="#">Become a Delaer</a></p>
+                    <p><a href="#">Contact us</a></p>
+                    <p><a href="#">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+
+                        <!-- LEFT -->
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="copyright-text">
+                                &copy;
+                                <script>document.write(new Date().getFullYear())</script>
+                                Duron. All rights reserved.
+                            </p>
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col-md-6 text-center text-md-end">
+                            <ul class="list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0">
+                                <li>
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        Terms & Conditions
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

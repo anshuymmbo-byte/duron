@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Duron - Brand Ambassador | Shikhar Dhawan</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #CEA43D;
+            --gold-dark: #B88D2C;
+            --gold-light: #DDB85E;
+            --dark: #000000;
+            --dark-gray: #0B0B0B;
+            --card-bg: #0a0a0a;
+            --card-border: #1e1e1e;
+            --text-muted: #a0a0a0;
+            --text-light: #f0f0f0;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+
+        /* gold text utility */
+        .gold-text {
+            color: var(--gold);
+        }
+
+        /* ========== TICKER (top bar) ========== */
+        .ticker {
+            background: var(--gold);
+            padding: 10px 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .ticker-inner {
+            display: flex;
+            gap: 60px;
+            animation: ticker 30s linear infinite;
+            white-space: nowrap;
+            width: max-content;
+        }
+
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-item {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .ticker-dot {
+            width: 5px;
+            height: 5px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .navbar-brand {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff !important;
+        }
+
+        .navbar-brand span {
+            color: var(--gold);
+        }
+
+        .navbar .nav-link {
+            color: #ccc !important;
+            letter-spacing: 2px;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        /* ========== BRAND AMBASSADOR HERO SECTION - FIXED OVERLAP ========== */
+        /* Using proper grid with no overlap - image and text stay separate */
+        .brand-ambassador-hero {
+            min-height: 100vh;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #050505 0%, #0f0f0f 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow-x: clip;
+        }
+
+        .brand-ambassador-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 30% 50%, rgba(206, 164, 61, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Image wrapper styling - proper sizing, no overflow */
+        .ambassador-img-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ambassador-img-wrapper img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            max-height: 550px;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+            transition: transform 0.4s ease;
+        }
+
+        .ambassador-img-wrapper:hover img {
+            transform: scale(1.02);
+        }
+
+        /* decorative gold accent behind image */
+        .img-glow-accent {
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            border: 2px solid rgba(206, 164, 61, 0.2);
+            top: 7.5%;
+            left: 7.5%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Content styling - proper spacing, no overlap */
+        .ambassador-content {
+            padding-left: 30px;
+            width: 100%;
+        }
+
+        .our-story-label {
+            letter-spacing: 5px;
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .story-heading {
+            font-size: 54px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .story-heading .gold {
+            color: var(--gold);
+        }
+
+        .title-line {
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px 0 25px 0;
+        }
+
+        .ambassador-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        .ambassador-title {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #aaa;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .story-body {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #ccc;
+            font-size: 15px;
+            max-width: 90%;
+        }
+
+        .btn-custom {
+            background-color: var(--gold);
+            color: #000;
+            padding: 14px 36px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 14px;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            border: 1.5px solid var(--gold);
+        }
+
+        .btn-custom:hover {
+            background-color: transparent;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ========== RESPONSIVE FIXES - NO OVERLAP ON ANY DEVICE ========== */
+        @media (max-width: 991px) {
+            .brand-ambassador-hero {
+                padding: 60px 0;
+                min-height: auto;
+            }
+
+            .story-heading {
+                font-size: 38px;
+                line-height: 1.2;
+            }
+
+            .ambassador-content {
+                padding-left: 0;
+                margin-top: 40px;
+                text-align: center;
+            }
+
+            .title-line {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ambassador-img-wrapper {
+                margin-bottom: 20px;
+            }
+
+            .ambassador-img-wrapper img {
+                max-height: 450px;
+            }
+
+            .story-body {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-custom {
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-heading {
+                font-size: 32px;
+            }
+
+            .ambassador-name {
+                font-size: 28px;
+            }
+
+            .btn-custom {
+                padding: 12px 28px;
+                font-size: 12px;
+            }
+
+            .ambassador-img-wrapper img {
+                max-height: 380px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .story-heading {
+                font-size: 28px;
+            }
+
+            .our-story-label {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+
+            .ambassador-name {
+                font-size: 24px;
+            }
+
+            .btn-custom {
+                padding: 10px 22px;
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .ambassador-img-wrapper img {
+                max-height: 320px;
+            }
+
+            .img-glow-accent {
+                width: 90%;
+                height: 90%;
+                top: 5%;
+                left: 5%;
+            }
+        }
+
+        /* Extra large screens - ensure proper spacing */
+        @media (min-width: 1400px) {
+            .story-heading {
+                font-size: 68px;
+            }
+
+            .ambassador-content {
+                padding-left: 50px;
+            }
+
+            .ambassador-img-wrapper img {
+                max-height: 650px;
+            }
+        }
+
+        /* technology strip styling */
+        .tech-strip {
+            background: #0a0a0a;
+            padding: 50px 0;
+            border-top: 1px solid #1e1e1e;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item i {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .tech-item h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .tech-item p {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #050505;
+            padding: 50px 0 25px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer h5 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 13px;
+            color: #777;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            padding-top: 25px;
+            margin-top: 25px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ticker announcement bar -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span class="ticker-item"><span class="ticker-dot"></span> DRIVE WITH CONFIDENCE</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> 4T SN GRADE · 20W40 · 10W30 · 10W40</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> TITANIUM PROTECTION TECHNOLOGY</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> PREMIUM ENGINE OIL FOR MOTORCYCLES UP TO
+                220CC</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> AVAILABLE ACROSS INDIA — 10 CITIES &
+                GROWING</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> DRIVE WITH CONFIDENCE</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> 4T SN GRADE · 20W40 · 10W30 · 10W40</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> TITANIUM PROTECTION TECHNOLOGY</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> PREMIUM ENGINE OIL FOR MOTORCYCLES UP TO
+                220CC</span>
+            <span class="ticker-item"><span class="ticker-dot"></span> AVAILABLE ACROSS INDIA — 10 CITIES &
+                GROWING</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">DUR<span>ON</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+                <ul class="navbar-nav gap-4">
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">PRODUCTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TECHNOLOGY</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">AMBASSADOR</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BRAND AMBASSADOR SECTION - SPLIT VIEW (Left: Image, Right: Quote & details) -->
+    <!-- FIXED: No overlap using Bootstrap grid with proper column classes -->
+    <section class="brand-ambassador-hero">
+        <div class="container">
+            <div class="row align-items-center g-4 g-lg-5">
+                <!-- Left column: Image - properly contained -->
+                <div class="col-lg-5 col-md-12">
+                    <div class="ambassador-img-wrapper">
+                        <div class="img-glow-accent"></div>
+                        <!-- Ambassador Image - using SVG data URI for high quality cricket theme -->
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 700'%3E%3Crect width='600' height='700' fill='%231a1a1a'/%3E%3Ccircle cx='300' cy='280' r='120' fill='%23333'/%3E%3Cpath d='M220 430 L380 430 L350 550 L250 550 Z' fill='%23222'/%3E%3Crect x='270' y='550' width='60' height='80' fill='%23444'/%3E%3Ctext x='300' y='340' text-anchor='middle' fill='%23CEA43D' font-size='28' font-family='Arial' font-weight='bold'%3EShikhar%3C/text%3E%3Ctext x='300' y='375' text-anchor='middle' fill='%23CEA43D' font-size='24' font-family='Arial' font-weight='bold'%3EDhawan%3C/text%3E%3C/svg%3E"
+                            alt="Shikhar Dhawan - Duron Brand Ambassador" class="img-fluid">
+                    </div>
+                </div>
+
+                <!-- Right column: Content - properly spaced, no overlap -->
+                <div class="col-lg-7 col-md-12">
+                    <div class="ambassador-content">
+                        <p class="our-story-label">BRAND AMBASSADOR</p>
+
+                        <h1 class="story-heading">
+                            "IN CRICKET AND ON THE<br>ROAD – YOU NEVER SETTLE<br>FOR <span class="gold">SECOND
+                                BEST.</span><br>DURON GIVES YOU THE<br>CONFIDENCE TO PUSH HARDER."
+                        </h1>
+                        <div class="title-line"></div>
+
+                        <h3 class="ambassador-name">SHIKHAR DHAWAN</h3>
+                        <p class="ambassador-title">BRAND AMBASSADOR · DURON ENGINE OILS</p>
+
+                        <p class="story-body">
+                            Through our partnership with Shikhar Dhawan, Duron embodies the fearless, spirited
+                            personality of a champion — resilient, reliable, and confident in high-stakes moments.
+                        </p>
+
+                        <a href="#" class="btn-custom">
+                            DRIVE WITH CONFIDENCE <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Highlights Strip -->
+    <section class="tech-strip">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 col-sm-6 mb-4 mb-md-0">
+                    <div class="tech-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Titanium Protection</h4>
+                        <p>Advanced wear protection for engine longevity and peak performance</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 mb-md-0">
+                    <div class="tech-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h4>Thermal Stability</h4>
+                        <p>Engineered for high-temperature stability up to 150°C</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="tech-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <h4>Fuel Efficiency</h4>
+                        <p>Friction-reducing formula for better mileage and smooth rides</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>DUR<span style="color:white">ON</span></h5>
+                    <p>Premium engine oils for the modern rider. Engineered for performance, built for confidence.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <p><a href="#">About Us</a></p>
+                    <p><a href="#">Products</a></p>
+                    <p><a href="#">Technology</a></p>
+                    <p><a href="#">Ambassador</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Support</h5>
+                    <p><a href="#">Contact Us</a></p>
+                    <p><a href="#">Dealer Locator</a></p>
+                    <p><a href="#">Become a Dealer</a></p>
+                    <p><a href="#">FAQs</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Connect</h5>
+                    <p><a href="#"><i class="fab fa-instagram me-2"></i>Instagram</a></p>
+                    <p><a href="#"><i class="fab fa-facebook me-2"></i>Facebook</a></p>
+                    <p><a href="#"><i class="fab fa-youtube me-2"></i>YouTube</a></p>
+                    <p><a href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Duron. All rights reserved. | Drive with confidence.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.btn-custom').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Experience the confidence of Duron engine oils. Explore our premium range!');
+            });
+        });
+    </script>
+</body>
+
+</html>

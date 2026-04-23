@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engine Oil - Product Detail</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        .cart-wrap {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 10px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb-bar {
+            padding: 13px 60px;
+            border-bottom: 1px solid var(--card-border);
+            background: var(--dark-gray);
+        }
+
+        .breadcrumb-bar span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-bar span a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb-bar span a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb-bar span.current {
+            color: var(--gold);
+        }
+
+        .breadcrumb-bar i {
+            font-size: 11px;
+            margin: 0 6px;
+            color: #333;
+        }
+
+        /* ── PRODUCT SECTION ── */
+        .product-section {
+            display: flex;
+            gap: 50px;
+            padding: 50px 60px;
+            align-items: flex-start;
+        }
+
+        /* ── LEFT: GALLERY ── */
+        .gallery {
+            flex-shrink: 0;
+            width: 460px;
+        }
+
+        .main-img {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 35% 30%, rgba(206, 164, 61, 0.07), transparent 60%);
+        }
+
+        .main-img svg {
+            position: relative;
+            z-index: 1;
+        }
+
+        .img-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 38px;
+            height: 38px;
+            background: var(--dark-gray);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+
+        .wishlist-btn i {
+            font-size: 16px;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .wishlist-btn:hover {
+            background: rgba(206, 164, 61, 0.12);
+        }
+
+        .wishlist-btn:hover i {
+            color: var(--gold);
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumb {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border);
+            border-radius: 10px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .thumb.active,
+        .thumb:hover {
+            border-color: var(--gold);
+        }
+
+        /* ── RIGHT: DETAILS ── */
+        .product-details {
+            flex: 1;
+        }
+
+        .brand-tag {
+            display: inline-block;
+            background: rgba(206, 164, 61, 0.1);
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(206, 164, 61, 0.25);
+            margin-bottom: 12px;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .product-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 14px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .rating-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .rating-text strong {
+            color: var(--text-light);
+        }
+
+        .in-stock {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #4ade80;
+            font-weight: 500;
+        }
+
+        .in-stock i {
+            font-size: 10px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--card-border);
+            margin: 20px 0;
+        }
+
+        /* Price */
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .price {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #333;
+            text-decoration: line-through;
+        }
+
+        .discount-tag {
+            background: rgba(206, 164, 61, 0.15);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .price-note {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 22px;
+        }
+
+        .price-note span {
+            color: #4ade80;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        /* Variants */
+        .variants {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .variant-btn {
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .variant-btn.active,
+        .variant-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(206, 164, 61, 0.08);
+        }
+
+        .grade-variants {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .grade-btn {
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 7px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .grade-btn.active,
+        .grade-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(206, 164, 61, 0.08);
+        }
+
+        /* Quantity */
+        .qty-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .qty-box {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            width: 42px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .qty-btn:hover {
+            color: var(--gold);
+            background: rgba(206, 164, 61, 0.08);
+        }
+
+        .qty-num {
+            width: 46px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-light);
+            border-left: 1px solid var(--card-border);
+            border-right: 1px solid var(--card-border);
+            line-height: 44px;
+        }
+
+        .qty-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .btn-cart {
+            flex: 1;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .btn-cart:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-buy {
+            flex: 1;
+            background: transparent;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+            padding: 14px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-buy:hover {
+            background: rgba(206, 164, 61, 0.1);
+        }
+
+        /* Delivery box */
+        .delivery-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .delivery-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .delivery-row i {
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .delivery-row h6 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .delivery-row p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Spec table */
+
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .spec-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .spec-table td {
+            padding: 10px 4px;
+            font-size: 13px;
+        }
+
+        .spec-table td:first-child {
+            color: var(--text-light);
+            width: 45%;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .spec-table td:last-child {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .spec-table tr:hover td {
+            background: rgba(206, 164, 61, 0.03);
+        }
+
+        /* ── DESCRIPTION SECTION ── */
+        .description-section {
+            padding: 0 60px 60px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 22px;
+            background: var(--gold);
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        .desc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .desc-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .desc-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .desc-card i {
+            font-size: 26px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .desc-card h5 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .desc-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .desc-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.9;
+            border-left: 3px solid var(--gold);
+            padding-left: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .breadcrumb-bar {
+                padding: 12px 20px;
+            }
+
+            .product-section {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .gallery {
+                width: 100%;
+            }
+
+            .description-section {
+                padding: 0 20px 40px;
+            }
+
+            .desc-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">ELITE<span>PERFORMANCE</span></a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+                <ul class="navbar-nav gap-0 mt-4 gap-lg-4 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">PRODUCTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#technology">TECHNOLOGY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="top-bar">
+        <i class="fas fa-tachometer-alt"></i> DRIVE WITH CONFIDENCE
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+        <span><a href="#">Home</a></span>
+        <i class="bi bi-chevron-right"></i>
+        <span><a href="#">Products</a></span>
+        <i class="bi bi-chevron-right"></i>
+        <span class="current">SynthMax 5W-30</span>
+    </div>
+
+    <!-- PRODUCT SECTION -->
+    <div class="product-section">
+
+        <!-- LEFT: Gallery -->
+        <div class="gallery">
+            <div class="main-img">
+                <!-- <div class="img-badge">32% OFF</div> -->
+                <!-- <div class="wishlist-btn"><i class="bi bi-heart"></i></div> -->
+                <img src="./image/productimage.jpg" alt="Product" class="bottle-img">
+            </div>
+
+
+        </div>
+
+        <!-- RIGHT: Details -->
+        <div class="product-details">
+            <div class="our-story-label ">✦ LubePro Premium</div>
+            <h1 class="tory-heading">SynthMax 5W-30 Full Synthetic Engine Oil</h1>
+            <p class="story-body">Suitable for Petrol & Diesel Engines · API SN/CF Certified</p>
+
+            <!-- <div class="rating-row">
+                <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                </div>
+                <div class="rating-text"><strong>4.9</strong> · 8,432 Reviews</div>
+                <div class="in-stock"><i class="bi bi-circle-fill"></i> In Stock</div>
+            </div> -->
+
+            <div class="divider"></div>
+
+            <!-- Price -->
+            <div class="price-row">
+                <div class="price">₹1,299</div>
+
+            </div>
+            <p class="price-note">Inclusive of all taxes ·</p>
+
+            <!-- Size -->
+            <div class="section-label">Select Size</div>
+            <div class="variants">
+                <button class="variant-btn active">1 Litre</button>
+                <button class="variant-btn">2 Litres</button>
+                <button class="variant-btn">4 Litres</button>
+                <button class="variant-btn">5 Litres</button>
+            </div>
+
+            <!-- Grade -->
+            <div class="section-label">Select Grade</div>
+            <div class="grade-variants">
+                <button class="grade-btn active">5W-30</button>
+                <button class="grade-btn">10W-40</button>
+                <button class="grade-btn">0W-20</button>
+                <button class="grade-btn">15W-50</button>
+                <button class="grade-btn">20W-50</button>
+            </div>
+
+
+
+            <!-- CTA -->
+            <div class="cta-row">
+                <button class="btn-custom w-100">Enquiry Now</button>
+                <!-- <button class="btn-buy"><i class="btn-catalogue"></i> Buy Now</button> -->
+            </div>
+
+            <!-- Delivery -->
+
+
+            <!-- Specs -->
+
+            <!-- <table class="spec-table">
+                <tr>
+                    <td>Brand</td>
+                    <td>LubePro</td>
+                </tr>
+                <tr>
+                    <td>Product Type</td>
+                    <td>Full Synthetic Engine Oil</td>
+                </tr>
+                <tr>
+                    <td>Viscosity Grade</td>
+                    <td>5W-30</td>
+                </tr>
+                <tr>
+                    <td>API Certification</td>
+                    <td>SN/CF</td>
+                </tr>
+                <tr>
+                    <td>Engine Type</td>
+                    <td>Petrol & Diesel</td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td>1 Litre</td>
+                </tr>
+                <tr>
+                    <td>Temperature Range</td>
+                    <td>-30°C to +50°C</td>
+                </tr>
+                <tr>
+                    <td>Country of Origin</td>
+                    <td>India</td>
+                </tr>
+            </table> -->
+        </div>
+    </div>
+
+    <section class="specifications-section">
+        <div class="container">
+            <h2 class="story-heading">Specifications</h2>
+            <div class="title-line"></div>
+            <table class="spec-table">
+                <tr>
+                    <td>Brand</td>
+                    <td>LubePro</td>
+                </tr>
+                <tr>
+                    <td>Product Type</td>
+                    <td>Full Synthetic Engine Oil</td>
+                </tr>
+                <tr>
+                    <td>Viscosity Grade</td>
+                    <td>5W-30</td>
+                </tr>
+                <tr>
+                    <td>API Certification</td>
+                    <td>SN/CF</td>
+                </tr>
+                <tr>
+                    <td>Engine Type</td>
+                    <td>Petrol & Diesel</td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td>1 Litre</td>
+                </tr>
+                <tr>
+                    <td>Temperature Range</td>
+                    <td>-30°C to +50°C</td>
+                </tr>
+                <tr>
+                    <td>Country of Origin</td>
+                    <td>India</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- DESCRIPTION SECTION -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <h5>DUR<span>O</span>N</h5>
+                    <p>Premium engine oils for the modern rider. Engineered for performance, built for confidence.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>QUICK LINKS</h5>
+                    <p><a href="./about.html">About</a></p>
+                    <p><a href="./product.html">Products</a></p>
+                    <p><a href="#technology">Technology</a></p>
+                    <p><a href="./contact.html">Contact</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>PRODUCTS</h5>
+                    <p><a href="./product-details.html">Duron 3100</a></p>
+                    <p><a href="./product-details.html">Duron 10W30</a></p>
+                    <p><a href="./product-details.html">Duron 10W40</a></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Network</h5>
+                    <p><a href="#">Dealer Locator</a></p>
+                    <p><a href="#">Become a Delaer</a></p>
+                    <p><a href="#">Contact us</a></p>
+                    <p><a href="#">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+
+                        <!-- LEFT -->
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="copyright-text">
+                                &copy;
+                                <script>document.write(new Date().getFullYear())</script>
+                                Duron. All rights reserved.
+                            </p>
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col-md-6 text-center text-md-end">
+                            <ul class="list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0">
+                                <li>
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        Terms & Conditions
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        document.querySelectorAll('.variant-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.closest('.variants').querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.grade-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.closest('.grade-variants').querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.thumb').forEach(t => {
+            t.addEventListener('click', function () {
+                document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const wb = document.querySelector('.wishlist-btn');
+        wb.addEventListener('click', function () {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('bi-heart')) {
+                icon.classList.replace('bi-heart', 'bi-heart-fill');
+                icon.style.color = 'var(--gold)';
+            } else {
+                icon.classList.replace('bi-heart-fill', 'bi-heart');
+                icon.style.color = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
