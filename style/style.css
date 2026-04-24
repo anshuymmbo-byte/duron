@@ -177,6 +177,13 @@ p {
     overflow: hidden;
 }
 
+.about-story-section {
+    background: var(--dark-gray);
+    padding: 60px 0px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
 .right-panel {
     padding: 0 50px;
 }
@@ -864,6 +871,46 @@ textarea.form-control {
     }
 }
 
+.about-banner {
+    position: relative;
+    background-image: url('../image/about-us-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(232, 255, 71, 0.08), transparent 70%); */
+}
+
+/* .banner-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(232, 255, 71, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 255, 71, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+} */
+
+
+
+
+.about-banner p {
+    font-size: 17px;
+    color: var(--text-light);
+    margin-top: 14px;
+    position: relative;
+}
+
 .contact-banner {
     position: relative;
     background: linear-gradient(160deg, #0a0a0a 0%, #141414 100%);
@@ -879,13 +926,13 @@ textarea.form-control {
     background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(232, 255, 71, 0.08), transparent 70%);
 }
 
-.banner-grid {
+/* .banner-grid {
     position: absolute;
     inset: 0;
     background-image: linear-gradient(rgba(232, 255, 71, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(232, 255, 71, 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
-}
+} */
 
 .contact-banner .badge-tag {
     display: inline-block;
@@ -1376,7 +1423,7 @@ textarea.form-control {
 
 /* ── TEAM / VALUES ── */
 .values-section {
-    background: var(--dark-gray);
+    background: var(--dark);
     padding: 80px 0;
 }
 
@@ -1442,4 +1489,64 @@ textarea.form-control {
 
 .product-card:hover::before {
     transform: scaleX(1);
+}
+
+.description-section {
+    background-color: var(--dark);
+    border-top: 1px solid var(--card-border);
+    padding: 80px 0px;
+}
+
+.hero-section {
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    /* border-bottom: 1px solid var(--card-border); */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Overlay */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-text-section {
+    background-color: var(--duron-dark);
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.about-text-section::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 300px;
+
+    /* background: radial-gradient(circle, var(--dark-gray) 0%, transparent 70%); */
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+
+.hero-divider {
+    width: 100px;
+    height: 3px;
+    background: var(--gold);
+    margin: 1.5rem auto;
 }
