@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="mainNav">
                 <ul class="navbar-nav gap-0 mt-4 gap-lg-4 mt-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link " href="./about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="./product.html">PRODUCTS</a></li>
                     <!-- <li class="nav-item"><a class="nav-link" href="./technology.html">TECHNOLOGY</a></li> -->
                     <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
@@ -93,21 +93,21 @@
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="right-panel">
                         <div class="our-story-label" data-aos="zoom-in">OUR STORY</div>
-                        <h2 class="story-heading" data-aos="zoom-in">BUILT FOR THE<br><span class="gold"
-                                data-aos="zoom-in">ELITE RIDER</span></h2>
+                        <h2 class="story-heading" data-aos="zoom-in">Built for <br><span class="gold"
+                                data-aos="zoom-in">Elite Performance</span></h2>
                         <div class="title-line"></div>
-                        <p class="story-body">Duron is a premium engine oil brand engineered for riders who demand peak
-                            performance. Our advanced formula ensures maximum protection and longevity for your engine.
+                        <p class="story-body">Engines deserve great protection. For too long, riders have had to choose
+                            between oils that cost too much or deliver too little.
+                            Duron was built to change that.
                         </p>
 
                         <p class="story-body">
-                            Operating in the value-premium segment, Duron delivers world-class Titanium Protection
-                            Technology and PurePlus formulation — making confidence accessible to every rider across the
-                            country.
+                            We believe elite performance should not be a privilege. Every formula we develop, every
+                            technology we test, carries that belief.
                         </p>
                         <p class="story-body">
-                            Our brand positioning is simple: Performance and Trust. Every bottle is proof that you don't
-                            have to compromise one for the other.
+                            Our Titanium-powered formula does not just protect your engine. It prepares it. For cold
+                            starts, long rides, and every demanding moment in between.
                         </p>
                         <hr class="story-divider">
 
@@ -149,16 +149,17 @@
     </section>
 
     <!-- PRODUCTS SECTION -->
-    <section class="products-section" id="products">
+    <section class="products-section px-4" id="products">
         <div class="container">
             <div class="row align-items-end mb-5" data-aos="zoom-in">
-                <div class="col-md-8">
+                <div class="col-md-8 col-sm-6">
                     <div class="our-story-label">PRODUCT RANGE</div>
                     <h2 class="story-heading">OUR <span class="gold">OILS</span></h2>
                     <div class="title-line"></div>
                 </div>
-                <div class="col-md-4 text-md-end mt-3 mt-md-0 mb-4">
-                    <a href="#" class="btn-catalogue">VIEW FULL CATALOGUE <i class="fas fa-arrow-right ms-2"></i></a>
+                <div class="col-md-4 col-sm-6 text-md-end mt-3 mt-md-0 mb-4">
+                    <a href="./product.html" class="btn-catalogue">VIEW FULL CATALOGUE <i
+                            class="fas fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
 
@@ -313,7 +314,7 @@
                 <div class="col-lg-5 col-md-8 col-12 ">
                     <div class="brand-img-wrapper" data-aos="zoom-in">
 
-                        <img src="./image/brand.png" alt="hero" />
+                        <!-- <img src="./image/brand.png" alt="hero" /> -->
                     </div>
                 </div>
 
@@ -471,33 +472,40 @@
                     <div class="col-12 col-md-6 contact-form" data-aos="fade-right">
                         <h2 class="form-title">SEND US A <span>MESSAGE</span></h2>
 
-                        <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Your Name" />
-                        </div>
+                        <form id="contactForm">
 
-                        <div class="mb-3">
-                            <label class="form-label">Email ID</label>
-                            <input type="email" class="form-control" placeholder="your@gmail.com" />
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" id="fullName" name="fullName" class="form-control"
+                                    placeholder="Your Name" />
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Subject</label>
-                            <select class="form-select">
-                                <option selected disabled>Product Enquiry</option>
-                                <option>Product Enquiry</option>
-                                <option>Support</option>
-                                <option>Partnership</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email ID</label>
+                                <input type="email" id="emailAddr" name="emailAddr" class="form-control"
+                                    placeholder="your@gmail.com" />
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" placeholder="How can we help you?"></textarea>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <select class="form-select" name="subject">
+                                    <option value="">Select Subject</option>
+                                    <option>Product Enquiry</option>
+                                    <option>Support</option>
+                                    <option>Partnership</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
 
-                        <button class="btn-send">Send Message</button>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" name="message"
+                                    placeholder="How can we help you?"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-send">Send Message</button>
+
+                        </form>
                     </div>
 
                 </div>
@@ -553,17 +561,35 @@
                         <!-- RIGHT -->
                         <div class="col-md-6">
                             <ul
-                                class="footer-links list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0">
+                                class="footer-links list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0 align-items-center flex-wrap">
+
                                 <li>
-                                    <a href="#">Privacy Policy</a>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/paytm.svg" alt="Paytm"
+                                        height="28" class="bg-white rounded px-2 py-1">
                                 </li>
-                                <li class="divider">|</li>
+
                                 <li>
-                                    <a href="#">Terms & Conditions</a>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/phonepe.svg"
+                                        alt="PhonePe" height="28" class="bg-white rounded px-2 py-1">
                                 </li>
+
+                                <li>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/visa.svg" alt="Visa"
+                                        height="28" class="bg-white rounded px-2 py-1">
+                                </li>
+
+                                <li>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mastercard.svg"
+                                        alt="Mastercard" height="28" class="bg-white rounded px-2 py-1">
+                                </li>
+
+                                <li>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlepay.svg"
+                                        alt="Google Pay" height="28" class="bg-white rounded px-2 py-1">
+                                </li>
+
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -581,6 +607,10 @@
             offset: 100
         });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="./srcipt/script.js"></script>
 </body>
 
 </html>

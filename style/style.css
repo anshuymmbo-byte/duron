@@ -242,6 +242,7 @@ p {
 .feature-item:hover {
     transform: translateX(5px);
     border-left-color: var(--gold);
+    padding: 5px;
 }
 
 .feature-icon {
@@ -514,9 +515,9 @@ p {
            AMBASSADOR SECTION
         ======================================== */
 .brand-hero {
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 60px 0;
-    background: url('../image/brandbf-1.png') no-repeat center center/cover;
+    background: url('../image/hero.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
 }
@@ -716,7 +717,7 @@ p {
 }
 
 .form-select {
-    color: var(--card-border) !important;
+    color: var(--text-light) !important;
 }
 
 .form-select option {
@@ -1549,4 +1550,10 @@ textarea.form-control {
     height: 3px;
     background: var(--gold);
     margin: 1.5rem auto;
+}
+
+label.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
 }

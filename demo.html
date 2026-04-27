@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products – Duron Engine Oil | Explore Through Filters</title>
+    <title>Products – Duron Engine Oil</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,21 +15,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
     <style>
         :root {
-            --dark: #0a0c10;
-            --darker: #05070a;
-            --dark-gray: #13171c;
-            --card-bg: #101318;
-            --card-border: #252a33;
-            --gold: #d4af37;
-            --gold-dark: #b48c2c;
-            --text-light: #f0f3f8;
-            --text-muted: #8e95a5;
-            --success: #2dd4bf;
-            --border: #252a33;
+            --gold: #cfa43d;
+            --dark: #0f0f0f;
+            --dark-gray: #1a1a1a;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --border: #2a2a2a;
         }
 
         * {
@@ -39,79 +36,78 @@
         }
 
         body {
+            background: var(--dark);
             font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
             color: var(--text-light);
-            overflow-x: hidden;
         }
 
         /* Navbar */
         .navbar {
-            background-color: rgba(5, 7, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: var(--dark);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(207, 164, 61, 0.2);
         }
 
         .navbar-brand {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
             letter-spacing: 2px;
-            color: var(--gold) !important;
         }
 
         .navbar-brand span {
-            color: white;
-            font-weight: 300;
+            color: var(--text-light);
         }
 
         .nav-link {
-            font-weight: 600;
-            font-size: 13px;
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 500;
             letter-spacing: 1px;
-            color: var(--text-light) !important;
-            transition: 0.2s;
+            transition: color 0.3s;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--gold) !important;
+            color: var(--gold);
         }
 
         /* Ticker */
         .ticker {
-            background: linear-gradient(90deg, #1a1f2a 0%, #0f1219 100%);
+            background: var(--dark-gray);
             overflow: hidden;
             white-space: nowrap;
-            padding: 8px 0;
-            border-bottom: 1px solid #2c2f3a;
+            padding: 10px 0;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .ticker-inner {
             display: inline-block;
-            animation: tickerScroll 25s linear infinite;
+            animation: ticker 25s linear infinite;
         }
 
         .ticker-item {
             display: inline-block;
-            margin: 0 24px;
-            font-size: 11px;
-            font-weight: 600;
+            margin: 0 20px;
+            font-size: 12px;
+            font-weight: 500;
             letter-spacing: 1px;
-            color: var(--gold);
+            color: var(--text-muted);
         }
 
         .ticker-dot {
-            display: inline-block;
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             background: var(--gold);
+            display: inline-block;
             border-radius: 50%;
             margin-right: 8px;
-            vertical-align: middle;
+            margin-bottom: 2px;
         }
 
-        @keyframes tickerScroll {
+        @keyframes ticker {
             0% {
                 transform: translateX(0);
             }
@@ -123,11 +119,25 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #0a0c10 0%, #13171c 100%);
-            padding: 80px 0;
-            text-align: center;
+            padding: 100px 0;
+            background-size: cover;
+            background-position: center;
             position: relative;
-            border-bottom: 1px solid var(--card-border);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
         }
 
         .our-story-label {
@@ -148,8 +158,6 @@
             font-size: 48px;
             font-weight: 700;
             line-height: 1.2;
-            color: var(--text-light);
-            margin-bottom: 16px;
         }
 
         .story-heading .gold {
@@ -159,254 +167,159 @@
         .story-body {
             font-size: 16px;
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .btn-custom {
             background: var(--gold);
             color: var(--dark);
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 40px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
             border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
         }
 
         .btn-custom:hover {
-            background: #c9a22e;
+            background: #b8860b;
             color: var(--dark);
             transform: translateY(-2px);
         }
 
         .btn-catalogue {
             background: transparent;
-            border: 1.5px solid var(--gold);
             color: var(--gold);
-            font-weight: 600;
-            padding: 10px 24px;
-            border-radius: 40px;
+            border: 1.5px solid var(--gold);
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
+            display: inline-block;
+            transition: all 0.3s;
         }
 
         .btn-catalogue:hover {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(206, 164, 61, 0.1);
             color: var(--gold);
         }
 
         .title-line {
-            width: 70px;
+            width: 50px;
             height: 3px;
             background: var(--gold);
-            margin-top: 8px;
+            margin: 15px 0;
         }
 
         /* Products Section */
         .products-section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
-        /* FILTERS SECTION - EXPLORE THROUGH FILTERS */
-        .filters-section {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 24px 28px;
-            margin-bottom: 40px;
-            border: 1px solid var(--card-border);
-        }
-
-        .filter-title {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .filter-group {
-            margin-bottom: 24px;
-        }
-
-        .filter-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .filter-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .filter-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-chip {
-            background: transparent;
-            border: 1px solid var(--card-border);
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 500;
-            padding: 6px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-chip.active,
-        .filter-chip:hover {
-            background: rgba(212, 175, 55, 0.12);
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        .reset-filters {
-            background: transparent;
-            border: 1px solid var(--card-border);
-            color: var(--text-muted);
-            font-size: 12px;
-            padding: 6px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 8px;
-        }
-
-        .reset-filters:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        .filter-stats {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 12px;
-            text-align: right;
-        }
-
-        /* Product Cards */
         .product-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
+            transition: all 0.3s;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.2s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
         .product-card:hover {
-            border-color: var(--gold);
             transform: translateY(-5px);
+            border-color: var(--gold);
         }
 
         .badge-top {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 15px;
+            left: 15px;
             background: var(--gold);
             color: var(--dark);
             font-size: 10px;
             font-weight: 700;
             padding: 4px 10px;
-            border-radius: 20px;
             z-index: 2;
+            letter-spacing: 0.5px;
         }
 
         .card-img-area {
             padding: 30px;
             text-align: center;
-            background: radial-gradient(circle at 30% 20%, #1e232c, #0b0e13);
-            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
         }
 
         .bottle-img {
-            max-height: 160px;
-            width: auto;
-            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .bottle-img {
+            transform: scale(1.05);
         }
 
         .card-body-content {
             padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .prod-name {
             font-size: 20px;
             font-weight: 700;
+            margin-bottom: 5px;
             color: var(--text-light);
-            margin-bottom: 4px;
         }
 
         .prod-grade {
             font-size: 12px;
             color: var(--gold);
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
         .prod-desc {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         .card-footer-row {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            margin-top: auto;
-            padding-top: 12px;
+            align-items: center;
             border-top: 1px solid var(--card-border);
+            padding-top: 15px;
         }
 
         .price {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--gold);
         }
 
         .price .rupee {
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .price .per {
-            font-size: 10px;
-            color: var(--text-muted);
+            font-size: 11px;
             font-weight: 400;
+            color: var(--text-muted);
         }
 
         .btn-details {
             background: transparent;
-            border: 1px solid var(--gold);
             color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 6px 15px;
+            border-radius: 6px;
             font-size: 12px;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 30px;
+            font-weight: 500;
             text-decoration: none;
-            transition: 0.2s;
+            transition: all 0.3s;
         }
 
         .btn-details:hover {
@@ -416,11 +329,15 @@
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #0f1219, #080a0e);
-            padding: 70px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 80px 0;
             text-align: center;
-            border-top: 1px solid var(--card-border);
-            border-bottom: 1px solid var(--card-border);
+            position: relative;
+        }
+
+        .cta-section .story-body {
+            max-width: 600px;
+            margin: 20px auto;
         }
 
         .title-underline {
@@ -432,22 +349,27 @@
 
         /* Footer */
         .footer {
-            background: #05080c;
-            padding: 60px 0 30px;
+            background: #0a0a0a;
+            padding: 50px 0 20px;
         }
 
         .footer h5 {
             color: var(--gold);
+            font-size: 16px;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
 
-        .footer p,
+        .footer p {
+            margin-bottom: 10px;
+        }
+
         .footer a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 14px;
+            transition: color 0.3s;
+            font-size: 13px;
         }
 
         .footer a:hover {
@@ -455,54 +377,54 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid #1f242e;
-            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
             margin-top: 30px;
         }
 
         .copyright-text {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .story-heading {
                 font-size: 32px;
             }
 
-            .filters-section {
-                padding: 18px;
+            .hero-section {
+                padding: 60px 0;
             }
 
-            .filter-stats {
-                text-align: left;
-                margin-top: 16px;
+            .products-section {
+                padding: 50px 0;
+            }
+
+            .cta-section {
+                padding: 50px 0;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">DUR<span>ON</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="mainNav">
                 <ul class="navbar-nav gap-0 mt-4 gap-lg-4 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./product.html">PRODUCTS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#technology">TECHNOLOGY</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">PRODUCTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- TICKER -->
     <div class="ticker">
         <div class="ticker-inner">
             <span class="ticker-item"><span class="ticker-dot"></span> DRIVE WITH CONFIDENCE</span>
@@ -522,228 +444,172 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-section">
+    <section class="hero-section text-center d-flex align-items-center">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <p class="our-story-label mb-3">Duron Performance Lubricants</p>
+                    <p class="our-story-label mb-3">About Duron Engine Oil</p>
                     <h1 class="story-heading mb-3">
                         ENGINEERED FOR <span class="gold">POWER</span><br>
                         BUILT TO LAST
                     </h1>
                     <p class="story-body">
-                        Premium engine oils for motorcycles & commuters. Experience smoother rides, superior protection,
-                        and extended engine life.
+                        Duron Engine Oil is India's trusted name in high-performance lubrication.
                     </p>
                     <div class="d-flex justify-content-center gap-3 mt-4">
                         <a href="#" class="btn-custom">Enquiry Now</a>
-                        <a href="#" class="btn-catalogue">Our Technology</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCTS SECTION WITH FILTERS -->
     <section class="products-section" id="products">
         <div class="container">
-            <div class="row align-items-end mb-4">
+            <div class="row align-items-end mb-5">
                 <div class="col-md-8">
                     <div class="our-story-label">PRODUCT RANGE</div>
                     <h2 class="story-heading">OUR <span class="gold">OILS</span></h2>
                     <div class="title-line"></div>
                 </div>
-                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <div class="col-md-4 text-md-end mt-3 mt-md-0 mb-4">
                     <a href="#" class="btn-catalogue">VIEW FULL CATALOGUE <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
 
-            <!-- 🔥 EXPLORE THROUGH FILTERS SECTION 🔥 -->
-            <div class="filters-section">
-                <div class="filter-title">
-                    <i class="fas fa-sliders-h"></i> EXPLORE THROUGH FILTERS
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <span class="filter-label"><i class="fas fa-tachometer-alt me-1"></i> VISCOSITY GRADE</span>
-                            <div class="filter-options" id="filterGrade">
-                                <span data-grade="all" class="filter-chip active">All Grades</span>
-                                <span data-grade="20W40" class="filter-chip">20W40</span>
-                                <span data-grade="10W30" class="filter-chip">10W30</span>
-                                <span data-grade="10W40" class="filter-chip">10W40</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <span class="filter-label"><i class="fas fa-oil-can me-1"></i> OIL TYPE</span>
-                            <div class="filter-options" id="filterType">
-                                <span data-type="all" class="filter-chip active">All Types</span>
-                                <span data-type="semi-synthetic" class="filter-chip">Semi-Synthetic</span>
-                                <span data-type="mineral" class="filter-chip">Mineral</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="filter-group">
-                            <span class="filter-label"><i class="fas fa-flask me-1"></i> PACK SIZE</span>
-                            <div class="filter-options" id="filterSize">
-                                <span data-size="all" class="filter-chip active">All Sizes</span>
-                                <span data-size="900ml" class="filter-chip">900ml</span>
-                                <span data-size="1L" class="filter-chip">1 Litre</span>
-                            </div>
-                        </div>
-                        <div class="text-end mt-2">
-                            <button class="reset-filters" id="resetFiltersBtn"><i class="fas fa-undo-alt me-1"></i>
-                                Reset Filters</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-stats" id="filterStats">
-                    Showing <span id="visibleCount">0</span> products
-                </div>
-            </div>
-
-            <!-- PRODUCT CARDS GRID -->
-            <div class="row g-4" id="productsGrid">
-                <!-- Product 1 - Duron 3100 (20W40, Semi-Synthetic, 1L) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="20W40" data-type="semi-synthetic"
-                    data-size="1L">
+            <div class="row g-4">
+                <!-- Product 1 - Duron 3100 20W40 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="badge-top"><i class="fas fa-star me-1"></i> TOP SELLER</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='35' y='70' fill='%23d4af37' font-size='12' font-weight='bold'%3E20W40%3C/text%3E%3C/svg%3E"
-                                alt="Duron 3100" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+3100" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
                             <h3 class="prod-name">DURON 3100</h3>
-                            <p class="prod-grade">20W40 · 4T SN GRADE · Semi-Synthetic</p>
+                            <p class="prod-grade">20W40 · 4T SN GRADE</p>
                             <p class="prod-desc">Optimised for lighter single-cylinder engines. Friction-reducing
                                 formulation for superior fuel economy without sacrificing protection.</p>
                             <div class="card-footer-row">
                                 <div class="price"><span class="rupee">₹</span>457 <span class="per">/ 1 LITRE</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-3100" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 - Duron 10W30 (10W30, Semi-Synthetic, 900ml) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="10W30" data-type="semi-synthetic"
-                    data-size="900ml">
+                <!-- Product 2 - Duron 10W30 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
-                        <div class="badge-top"><i class="fas fa-star me-1"></i> BEST VALUE</div>
+                        <div class="badge-top"><i class="fas fa-star me-1"></i> TOP SELLER</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='32' y='70' fill='%23d4af37' font-size='12' font-weight='bold'%3E10W30%3C/text%3E%3C/svg%3E"
-                                alt="Duron 10W30" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+10W30" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
                             <h3 class="prod-name">DURON 10W30</h3>
-                            <p class="prod-grade">10W30 · 4T SN GRADE · Semi-Synthetic</p>
-                            <p class="prod-desc">Smooth gear shifts & wet clutch compatibility. Excellent cold-start
-                                protection for modern 100-200cc motorcycles.</p>
+                            <p class="prod-grade">10W30 · 4T SN GRADE</p>
+                            <p class="prod-desc">Optimised for lighter single-cylinder engines. Friction-reducing
+                                formulation for superior fuel economy without sacrificing protection.</p>
                             <div class="card-footer-row">
                                 <div class="price"><span class="rupee">₹</span>421 <span class="per">/ 900 ML</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-10w30" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 - Duron 10W40 (10W40, Semi-Synthetic, 1L) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="10W40" data-type="semi-synthetic"
-                    data-size="1L">
+                <!-- Product 3 - Duron 10W40 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="badge-top"><i class="fas fa-fire me-1"></i> NEW</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='32' y='70' fill='%23d4af37' font-size='12' font-weight='bold'%3E10W40%3C/text%3E%3C/svg%3E"
-                                alt="Duron 10W40" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+10W40" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
                             <h3 class="prod-name">DURON 10W40</h3>
-                            <p class="prod-grade">10W40 · 4T SN GRADE · Semi-Synthetic</p>
-                            <p class="prod-desc">High-temperature stability for longer rides & aggressive riding
-                                conditions. Reduces engine wear by 30%.</p>
+                            <p class="prod-grade">10W40 · 4T SN GRADE</p>
+                            <p class="prod-desc">Optimised for lighter single-cylinder engines. Friction-reducing
+                                formulation for superior fuel economy without sacrificing protection.</p>
                             <div class="card-footer-row">
-                                <div class="price"><span class="rupee">₹</span>485 <span class="per">/ 1 LITRE</span>
+                                <div class="price"><span class="rupee">₹</span>421 <span class="per">/ 900 ML</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-10w40" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 - Duron 20W50 Mineral (20W50, Mineral, 1L) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="20W40" data-type="mineral" data-size="1L">
+                <!-- Product 4 - Duron SynthMax 5W-30 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
-                        <div class="badge-top"><i class="fas fa-truck me-1"></i> HEAVY DUTY</div>
+                        <div class="badge-top"><i class="fas fa-trophy me-1"></i> PREMIUM</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='32' y='70' fill='%23d4af37' font-size='12'%3E20W50%3C/text%3E%3C/svg%3E"
-                                alt="Duron 20W50" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+5W-30" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
-                            <h3 class="prod-name">DURON 20W50</h3>
-                            <p class="prod-grade">20W50 · Mineral · 4T</p>
-                            <p class="prod-desc">Ideal for older engines & high-mileage motorcycles. Provides thick oil
-                                film for maximum protection.</p>
+                            <h3 class="prod-name">DURON SYNTHMAX 5W-30</h3>
+                            <p class="prod-grade">5W-30 · API SP · FULL SYNTHETIC</p>
+                            <p class="prod-desc">Premium full synthetic engine oil for modern petrol, diesel, and
+                                turbocharged engines. Maximum protection and fuel efficiency.</p>
                             <div class="card-footer-row">
-                                <div class="price"><span class="rupee">₹</span>399 <span class="per">/ 1 LITRE</span>
+                                <div class="price"><span class="rupee">₹</span>1,299 <span class="per">/ 1 LITRE</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-5w30" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 5 - Duron 10W40 Premium (10W40, Semi-Synthetic, 900ml) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="10W40" data-type="semi-synthetic"
-                    data-size="900ml">
+                <!-- Product 5 - Duron 15W-50 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
-                        <div class="badge-top"><i class="fas fa-rocket me-1"></i> PERFORMANCE</div>
+                        <div class="badge-top"><i class="fas fa-motorcycle me-1"></i> BIKE</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='32' y='70' fill='%23d4af37' font-size='12'%3E10W40%3C/text%3E%3C/svg%3E"
-                                alt="Duron 10W40 Premium" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+15W-50" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
-                            <h3 class="prod-name">DURON 10W40 PREMIUM</h3>
-                            <p class="prod-grade">10W40 · 4T SN GRADE · Semi-Synthetic</p>
-                            <p class="prod-desc">Enhanced additive package for better gear protection & reduced engine
-                                noise. Perfect for 150-220cc bikes.</p>
+                            <h3 class="prod-name">DURON 5 IN 1 15W-50</h3>
+                            <p class="prod-grade">15W-50 · API SN · JASO MA2</p>
+                            <p class="prod-desc">Semi-synthetic engine oil designed for 4-stroke motorcycles with
+                                superior protection and smooth gear shifting.</p>
                             <div class="card-footer-row">
-                                <div class="price"><span class="rupee">₹</span>449 <span class="per">/ 900 ML</span>
+                                <div class="price"><span class="rupee">₹</span>699 <span class="per">/ 1 LITRE</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-15w50" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 6 - Duron 10W30 Mineral (10W30, Mineral, 900ml) -->
-                <div class="col-lg-4 col-md-6 product-item" data-grade="10W30" data-type="mineral" data-size="900ml">
+                <!-- Product 6 - Duron 0W-20 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="product-card">
-                        <div class="badge-top"><i class="fas fa-coins me-1"></i> ECONOMY</div>
+                        <div class="badge-top"><i class="fas fa-leaf me-1"></i> ECO</div>
                         <div class="card-img-area">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 100 140'%3E%3Crect x='20' y='15' width='60' height='110' rx='12' fill='%231e232c' stroke='%23d4af37' stroke-width='1.2'/%3E%3Ctext x='32' y='70' fill='%23d4af37' font-size='12'%3E10W30%3C/text%3E%3C/svg%3E"
-                                alt="Duron 10W30 Mineral" class="bottle-img">
+                            <img src="https://via.placeholder.com/300x400?text=Duron+0W-20" alt="Product"
+                                class="bottle-img">
                         </div>
                         <div class="card-body-content">
-                            <h3 class="prod-name">DURON 10W30 MINERAL</h3>
-                            <p class="prod-grade">10W30 · Mineral · 4T</p>
-                            <p class="prod-desc">Budget-friendly option for daily commuters. Reliable protection for
-                                standard riding conditions.</p>
+                            <h3 class="prod-name">DURON SYNTHMAX 0W-20</h3>
+                            <p class="prod-grade">0W-20 · API SP · HYBRID READY</p>
+                            <p class="prod-desc">Ultra fuel-efficient full synthetic oil for hybrid vehicles and modern
+                                petrol engines. Maximum fuel economy.</p>
                             <div class="card-footer-row">
-                                <div class="price"><span class="rupee">₹</span>359 <span class="per">/ 900 ML</span>
+                                <div class="price"><span class="rupee">₹</span>1,499 <span class="per">/ 1 LITRE</span>
                                 </div>
-                                <a href="./product-details.html" class="btn-details">DETAILS <i
+                                <a href="demo-details.html?product=duron-0w20" class="btn-details">DETAILS <i
                                         class="fas fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
@@ -756,7 +622,7 @@
     <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container position-relative" style="z-index:1;">
-            <p class="our-story-label d-inline-flex mx-auto">Not Sure Which Oil?</p>
+            <p class="our-story-label justify-content-center">Not Sure Which Oil?</p>
             <h2 class="story-heading">FIND THE <span class="gold">RIGHT OIL</span><br>FOR YOUR VEHICLE</h2>
             <p class="story-body">Use our free Oil Selector tool — enter your vehicle details and we'll recommend the
                 perfect Duron product in seconds.</p>
@@ -773,20 +639,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 mb-4">
-                    <h5>DUR<span>O</span>N</h5>
-                    <p>Premium engine oils for the modern rider. Engineered for performance, built for confidence.</p>
+                    <img src="#" alt="logo" style="max-width: 150px;" />
+                    <p class="mt-3">Premium engine oils for the modern rider. Engineered for performance, built for
+                        confidence.</p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>QUICK LINKS</h5>
-                    <p><a href="./about.html">About</a></p>
-                    <p><a href="./product.html">Products</a></p>
-                    <p><a href="./contact.html">Contact</a></p>
+                    <p><a href="#">Home</a></p>
+                    <p><a href="#">About</a></p>
+                    <p><a href="#">Products</a></p>
+                    <p><a href="#">Contact</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>PRODUCTS</h5>
-                    <p><a href="#">Duron 3100</a></p>
-                    <p><a href="#">Duron 10W30</a></p>
-                    <p><a href="#">Duron 10W40</a></p>
+                    <p><a href="product-details.html?product=duron-3100">Duron 3100</a></p>
+                    <p><a href="product-details.html?product=duron-10w30">Duron 10W30</a></p>
+                    <p><a href="product-details.html?product=duron-10w40">Duron 10W40</a></p>
+                    <p><a href="product-details.html?product=duron-5w30">Duron 5W-30</a></p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Network</h5>
@@ -797,20 +666,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 text-center text-md-start">
-                            <p class="copyright-text">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Duron Lubricants. All rights
-                                reserved.
-                            </p>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <ul class="list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0">
-                                <li><a href="#" class="text-decoration-none text-secondary">Privacy Policy</a></li>
-                                <li><a href="#" class="text-decoration-none text-secondary">Terms & Conditions</a></li>
-                            </ul>
-                        </div>
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="copyright-text">
+                            &copy;
+                            <script>document.write(new Date().getFullYear())</script> Duron. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <ul class="list-unstyled d-flex justify-content-center justify-content-md-end gap-3 mb-0">
+                            <li><a href="#" class="text-decoration-none text-secondary">Privacy Policy</a></li>
+                            <li><a href="#" class="text-decoration-none text-secondary">Terms & Conditions</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -819,92 +686,75 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // FILTER FUNCTIONALITY - EXPLORE THROUGH FILTERS
-        const products = document.querySelectorAll('.product-item');
-        const filterGradeBtns = document.querySelectorAll('#filterGrade .filter-chip');
-        const filterTypeBtns = document.querySelectorAll('#filterType .filter-chip');
-        const filterSizeBtns = document.querySelectorAll('#filterSize .filter-chip');
-        const resetBtn = document.getElementById('resetFiltersBtn');
-        const visibleCountSpan = document.getElementById('visibleCount');
-
-        let activeGrade = 'all';
-        let activeType = 'all';
-        let activeSize = 'all';
-
-        function updateFilters() {
-            let visible = 0;
-            products.forEach(product => {
-                const productGrade = product.getAttribute('data-grade');
-                const productType = product.getAttribute('data-type');
-                const productSize = product.getAttribute('data-size');
-
-                let gradeMatch = (activeGrade === 'all' || productGrade === activeGrade);
-                let typeMatch = (activeType === 'all' || productType === activeType);
-                let sizeMatch = (activeSize === 'all' || productSize === activeSize);
-
-                if (gradeMatch && typeMatch && sizeMatch) {
-                    product.style.display = '';
-                    visible++;
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-            visibleCountSpan.innerText = visible;
-        }
-
-        // Grade filter listeners
-        filterGradeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterGradeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeGrade = btn.getAttribute('data-grade');
-                updateFilters();
-            });
-        });
-
-        // Type filter listeners
-        filterTypeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterTypeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeType = btn.getAttribute('data-type');
-                updateFilters();
-            });
-        });
-
-        // Size filter listeners
-        filterSizeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterSizeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeSize = btn.getAttribute('data-size');
-                updateFilters();
-            });
-        });
-
-        // Reset all filters
-        resetBtn.addEventListener('click', () => {
-            activeGrade = 'all';
-            activeType = 'all';
-            activeSize = 'all';
-
-            filterGradeBtns.forEach(btn => {
-                if (btn.getAttribute('data-grade') === 'all') btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-            filterTypeBtns.forEach(btn => {
-                if (btn.getAttribute('data-type') === 'all') btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-            filterSizeBtns.forEach(btn => {
-                if (btn.getAttribute('data-size') === 'all') btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-            updateFilters();
-        });
-
-        // Initialize
-        updateFilters();
+        // Product Database for reference (same as detail page)
+        const products = {
+            "duron-3100": {
+                name: "Duron 3100",
+                fullName: "Duron 3100 20W40",
+                subtitle: "20W40 · 4T SN GRADE",
+                price: "₹457",
+                image: "https://via.placeholder.com/300x400?text=Duron+3100",
+                description: "Optimised for lighter single-cylinder engines. Friction-reducing formulation for superior fuel economy without sacrificing protection.",
+                fullDescription: "<strong>Engineered for performance, built for confidence.</strong> Duron 3100 is specially formulated for lighter single-cylinder engines. Its friction-reducing formula delivers superior fuel economy while maintaining excellent engine protection.",
+                features: ["Superior fuel economy", "Friction-reducing formula", "Engine protection", "Smooth performance"],
+                specs: { "Brand": "Duron", "Viscosity": "20W40", "Grade": "4T SN", "Engine Type": "Single Cylinder", "Volume": "1L" }
+            },
+            "duron-10w30": {
+                name: "Duron 10W30",
+                fullName: "Duron 10W30",
+                subtitle: "10W30 · 4T SN GRADE",
+                price: "₹421",
+                image: "https://via.placeholder.com/300x400?text=Duron+10W30",
+                description: "Optimised for lighter single-cylinder engines. Friction-reducing formulation for superior fuel economy.",
+                fullDescription: "<strong>Engineered for performance, built for confidence.</strong> Duron 10W30 provides excellent protection for modern motorcycles.",
+                features: ["Fuel efficient", "Engine protection", "Smooth shifting", "Long life"],
+                specs: { "Brand": "Duron", "Viscosity": "10W30", "Grade": "4T SN", "Engine Type": "Motorcycle", "Volume": "900ML" }
+            },
+            "duron-10w40": {
+                name: "Duron 10W40",
+                fullName: "Duron 10W40",
+                subtitle: "10W40 · 4T SN GRADE",
+                price: "₹421",
+                image: "https://via.placeholder.com/300x400?text=Duron+10W40",
+                description: "Optimised for lighter single-cylinder engines. Friction-reducing formulation for superior fuel economy.",
+                fullDescription: "<strong>Engineered for performance, built for confidence.</strong> Duron 10W40 delivers outstanding protection and performance.",
+                features: ["High performance", "Engine protection", "Thermal stability", "Extended life"],
+                specs: { "Brand": "Duron", "Viscosity": "10W40", "Grade": "4T SN", "Engine Type": "Motorcycle", "Volume": "900ML" }
+            },
+            "duron-5w30": {
+                name: "Duron SynthMax 5W-30",
+                fullName: "Duron SynthMax 5W-30",
+                subtitle: "API SP · Full Synthetic",
+                price: "₹1,299",
+                image: "https://via.placeholder.com/300x400?text=Duron+5W-30",
+                description: "Premium full synthetic oil for modern engines.",
+                fullDescription: "<strong>Premium protection.</strong> Full synthetic formula for maximum performance.",
+                features: ["Full synthetic", "Turbo protection", "Fuel efficient", "Cold start"],
+                specs: { "Brand": "Duron", "Viscosity": "5W-30", "API": "SP", "Type": "Full Synthetic" }
+            },
+            "duron-15w50": {
+                name: "Duron 15W-50",
+                fullName: "Duron 5 in 1 15W-50",
+                subtitle: "API SN · JASO MA2",
+                price: "₹699",
+                image: "https://via.placeholder.com/300x400?text=Duron+15W-50",
+                description: "Semi-synthetic for 4-stroke motorcycles.",
+                fullDescription: "<strong>Superior protection.</strong> Perfect for 4-stroke motorcycles.",
+                features: ["Semi-synthetic", "Smooth shifting", "Engine protection", "Long life"],
+                specs: { "Brand": "Duron", "Viscosity": "15W-50", "API": "SN", "JASO": "MA2" }
+            },
+            "duron-0w20": {
+                name: "Duron 0W-20",
+                fullName: "Duron SynthMax 0W-20",
+                subtitle: "API SP · Hybrid Ready",
+                price: "₹1,499",
+                image: "https://via.placeholder.com/300x400?text=Duron+0W-20",
+                description: "Ultra fuel-efficient for hybrids.",
+                fullDescription: "<strong>Maximum efficiency.</strong> Perfect for hybrid vehicles.",
+                features: ["Hybrid optimized", "Fuel efficient", "Eco friendly", "Cold start"],
+                specs: { "Brand": "Duron", "Viscosity": "0W-20", "API": "SP", "Type": "Full Synthetic" }
+            }
+        };
     </script>
 </body>
 
