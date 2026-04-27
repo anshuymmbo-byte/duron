@@ -97,7 +97,7 @@
         .main-img {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            height: 400px;
+            /* height: 400px; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -357,8 +357,8 @@
         }
 
         .bottle-img {
-            max-width: 80%;
-            max-height: 80%;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
         }
 
@@ -510,7 +510,7 @@
             <div class="divider"></div>
 
             <div class="cta-row">
-                <button class="btn-custom w-100">Enquiry Now</button>
+                <a href="./contact.html" class="btn-custom w-100 text-center">Enquiry Now</a>
             </div>
         </div>
     </div>
@@ -565,12 +565,20 @@
                     <p><a href="#">Duron 10W30</a></p>
                     <p><a href="#">Duron 10W40</a></p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5>Network</h5>
-                    <p><a href="#">Dealer Locator</a></p>
-                    <p><a href="#">Become a Delaer</a></p>
-                    <p><a href="#">Contact us</a></p>
-                    <p><a href="#">Support</a></p>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>PRODUCTS</h5>
+                    <p> <a href="./product-details.html?product=duron-3100-15w50" class="text-decoration-none">Duron
+                            3100 15W50</a></p>
+                    <p> <a ref="./product-details.html?product=duron-3100-5W30" class="text-decoration-none">Duron
+                            3100 5W30</a></p>
+                    <p> <a href="./product-details.html?product=duron-5100-20W50" class="text-decoration-none">Duron
+                            5100 20W50</a></p>
+                    <p> <a href="./product-details.html?product=duron-3100-20W40" class="text-decoration-none">Duron
+                            3100 20W40</a></p>
+                    <p> <a href="./product-details.html?product=duron-3100-10W40" class="text-decoration-none">Duron
+                            3100 10W40</a></p>
+                    <p> <a href="./product-details.html?product=duron-4100-15W40" class="text-decoration-none">Duron
+                            4100 15W40</a></p>
                 </div>
             </div>
             <div class="footer-bottom py-3 border-top">
@@ -637,7 +645,7 @@
                 "subtitle": "15W50 · API SN · JASO MA2",
                 "tagline": "5 in 1 Formula",
                 "type": "Semi Synthetic Engine Oil",
-
+                "img": "./image/DuronOilPackaging3100-15W-50APISN1000ML.jpg.jpeg",
                 "description": "High-performance engine oil with 5-in-1 formula designed for superior protection, smooth gear shifting, and long engine life.",
 
                 "fullDescription": "Duron 3100 15W50 is an advanced semi-synthetic engine oil engineered for modern 4-stroke motorcycles and scooters. It provides enhanced protection, smooth clutch performance, and improved engine cleanliness while ensuring long-lasting durability.",
@@ -691,6 +699,7 @@
                 "fullName": "Duron 3100 4T 5W30",
                 "subtitle": "5W30 · API SN · JASO MA2",
                 "type": "Synthetic Engine Oil",
+                "img": "./image/DuronOilPackaging3100-5W-30APISN1000ML.jpg.jpeg",
 
                 "description": "Advanced synthetic engine oil designed for modern motorcycles delivering smooth performance and long engine life.",
 
@@ -744,6 +753,7 @@
                 "subtitle": "20W50 · API SP · JASO MA2",
                 "tagline": "7 in 1 Formula",
                 "type": "Fully Synthetic Engine Oil",
+                "img": "./image/DuronOilPackaging3100-15W-50APISN1000ML.jpg.jpeg",
 
                 "description": "Premium fully synthetic engine oil designed for high-performance motorcycles delivering superior protection and smooth riding experience.",
 
@@ -797,7 +807,7 @@
                 "subtitle": "20W40 · API SN · JASO MA2",
                 "tagline": "High Performance",
                 "type": "Semi Synthetic Engine Oil",
-
+                "img": "./image/Duron-Oil-Packaging-3100-20W-40APISN1000ML.jpg",
                 "description": "Reliable engine oil designed for everyday motorcycles delivering consistent performance and protection.",
 
                 "fullDescription": "Duron 3100 20W40 is a high-performance engine oil developed for 4-stroke motorcycles and scooters. It ensures smooth operation, reduces engine wear, and maintains engine cleanliness for long-lasting performance in daily riding conditions.",
@@ -850,6 +860,7 @@
                 "subtitle": "10W40 · API SN",
                 "tagline": "Drive With Confidence",
                 "type": "Synthetic Formula Engine Oil",
+                "img": "./image/DuronOilPackaging3100-10W-40APISN900ML.jpg.jpeg",
 
                 "description": "High-performance engine oil designed for motorcycles and scooters, delivering smooth performance and engine protection.",
 
@@ -898,13 +909,14 @@
             },
 
             // Product 6: Only 1L option
-            "duron-3100-15W40": {
+            "duron-5100-15W40": {
                 "id": "duron-4100-15w40-3l",
                 "name": "Duron 4100",
                 "fullName": "Duron 4100 15W40",
                 "subtitle": "15W40 · CH-4 Plus",
                 "tagline": "TurboDrive",
                 "type": "Heavy Duty Engine Oil",
+                "img": "./image/DuronOilPackaging3100-15W-50APISN1000ML.jpg.jpeg",
 
                 "description": "High-performance engine oil specially designed for commercial and heavy-duty diesel vehicles.",
 
@@ -992,7 +1004,7 @@
             // Update basic info
             document.getElementById("product-name").innerText = currentProduct.fullName;
             document.getElementById("product-subtitle").innerHTML = currentProduct.subtitle;
-            document.getElementById("product-image").src = currentProduct.image;
+            document.getElementById("product-image").src = currentProduct.img;
             // document.getElementById("product-description").innerHTML = currentProduct.fullDescription;
 
             document.getElementById("product-description").innerHTML = currentProduct.description;

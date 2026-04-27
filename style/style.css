@@ -351,7 +351,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 .bottle-img {
@@ -515,9 +515,9 @@ p {
            AMBASSADOR SECTION
         ======================================== */
 .brand-hero {
-    min-height: 90vh;
+    min-height: 100vh;
     padding: 60px 0;
-    background: url('../image/hero.png') no-repeat center center/cover;
+    background: url('../image/Section5.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
 }
@@ -830,7 +830,7 @@ textarea.form-control {
     }
 
     .right-panel {
-        padding: 40px 25px;
+        padding: 40px 18px;
     }
 
     .feature-grid {
@@ -1556,4 +1556,13 @@ label.error {
     color: red;
     font-size: 12px;
     margin-top: 4px;
+}
+
+@media (max-width: 576px) {
+    .brand-hero {
+        min-height: 30vh;
+        padding: 20px 0;
+        background-position: center top;
+        background-size: cover;
+    }
 }
