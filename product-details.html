@@ -455,25 +455,43 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+
+            <!-- LEFT: LOGO -->
+            <a class="navbar-brand" href="#">
+                <img src="./image/Duron-Logo.png" alt="logo" width="150">
+            </a>
+
+            <!-- TOGGLER -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="mainNav">
-                <ul class="navbar-nav gap-0 mt-4 gap-lg-4 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./product.html">PRODUCTS</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">CONTACT</a></li>
+            <!-- NAV CONTENT -->
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <!-- CENTER MENU -->
+                <ul class="navbar-nav mx-auto text-center gap-10">
+                    <li class="nav-item"><a class="nav-link px-2" href="./index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-2" href="./about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-2" href="./product.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link px-2" href="./contact.html">Contact</a></li>
                 </ul>
+
+                <!-- RIGHT CTA -->
+                <div class="d-flex justify-content-center justify-content-md-end mt-3 mt-md-0">
+                    <a href="./contact.html" class="btn-catalogue">Get Quote</a>
+                </div>
+
             </div>
+
         </div>
     </nav>
-    <div class="top-bar">
+
+    <!-- <div class="top-bar">
         <i class="fas fa-tachometer-alt"></i> DRIVE WITH CONFIDENCE
-    </div>
+    </div> -->
 
     <div class="breadcrumb-bar">
         <span><a href="./index.html">Home</a></span>

@@ -59,7 +59,7 @@ p {
 .navbar {
     background: var(--dark);
     backdrop-filter: blur(10px);
-    padding: 16px 0;
+    /* padding: 16px 0; */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -77,8 +77,8 @@ p {
 }
 
 .navbar .nav-link {
-    color: #aaa !important;
-    letter-spacing: 2px;
+    color: var(--text-light) !important;
+    letter-spacing: 4px;
     transition: 0.3s;
     font-size: 16px;
     text-transform: uppercase;
@@ -317,7 +317,7 @@ p {
     text-decoration: none;
     transition: all 0.3s;
     display: inline-block;
-    line-height: 2;
+    line-height: 1;
 }
 
 .btn-catalogue:hover {
