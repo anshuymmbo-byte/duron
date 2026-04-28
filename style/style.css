@@ -841,11 +841,11 @@ textarea.form-control {
 
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 10px;
     }
 
     .features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
     }
 
     .ambassador-content {
@@ -1599,6 +1599,10 @@ label.error {
     .cta-section::before {
         content: 'DURON';
         font-size: 133px;
+    }
+
+    .feature-title {
+        font-size: 13px;
     }
 }
 
